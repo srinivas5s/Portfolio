@@ -25,7 +25,7 @@ function Logo({ onClick }) {
     >
       <span
         className={[
-          "font-mono text-[var(--accent-primary)] text-xl",
+          "font-mono text-(--accent-primary) text-xl",
           "transition-transform duration-300",
           "group-hover:-translate-x-0.5",
         ].join(" ")}
@@ -36,8 +36,8 @@ function Logo({ onClick }) {
       <span
         className={[
           "font-display font-bold text-lg tracking-tight",
-          "text-[var(--text-primary)]",
-          "group-hover:text-[var(--accent-primary)]",
+          "text-(--text-primary)",
+          "group-hover:text-(--accent-primary)",
         ].join(" ")}
       >
         {PERSONAL_INFO.name}
@@ -45,7 +45,7 @@ function Logo({ onClick }) {
 
       <span
         className={[
-          "font-mono text-[var(--accent-primary)] text-xl",
+          "font-mono text-(--accent-primary) text-xl",
           "transition-transform duration-300",
           "group-hover:translate-x-0.5",
         ].join(" ")}
@@ -73,10 +73,10 @@ function NavLink({ href, label, isActive, onClick }) {
           "relative py-1 text-sm font-medium tracking-wide",
           "transition-colors duration-200",
           "focus-visible:outline-none focus-visible:ring-2",
-          "focus-visible:ring-[var(--accent-primary)] rounded-sm",
+          "focus-visible:ring-(--accent-primary) rounded-sm",
           isActive
-            ? "text-[var(--accent-primary)]"
-            : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]",
+            ? "text-(--accent-primary)"
+            : "text-(--text-secondary) hover:text-(--text-primary)",
         ].join(" ")}
         aria-current={isActive ? "page" : undefined}
       >
@@ -85,7 +85,7 @@ function NavLink({ href, label, isActive, onClick }) {
         <span
           className={[
             "absolute -bottom-0.5 left-0 h-[1.5px]",
-            "bg-[var(--accent-primary)]",
+            "bg-(--accent-primary)",
             "transition-all duration-300",
             isActive ? "w-full" : "w-0",
           ].join(" ")}
@@ -130,7 +130,7 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
       <div
         className={[
           "fixed inset-0 z-40",
-          "bg-[var(--bg-primary)]/80 backdrop-blur-sm",
+          "bg-(--bg-primary)/80 backdrop-blur-sm",
           "transition-opacity duration-300",
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
         ].join(" ")}
@@ -146,17 +146,17 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
         aria-label="Navigation menu"
         className={[
           "fixed top-0 right-0 bottom-0 z-50",
-          "w-[280px]",
-          "bg-[var(--bg-secondary)]",
-          "border-l border-[var(--border-subtle)]",
+          "w-70",
+          "bg-(--bg-secondary)",
+          "border-l border-(--border-subtle)",
           "flex flex-col",
           "transition-transform duration-350 ease-out",
           isOpen ? "translate-x-0" : "translate-x-full",
         ].join(" ")}
       >
         {/* Menu header */}
-        <div className="flex items-center justify-between p-6 border-b border-[var(--border-subtle)]">
-          <span className="font-mono text-xs tracking-widest text-[var(--text-tertiary)] uppercase">
+        <div className="flex items-center justify-between p-6 border-b border-(--border-subtle)">
+          <span className="font-mono text-xs tracking-widest text-(--text-tertiary) uppercase">
             Navigation
           </span>
 
@@ -165,11 +165,11 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
             onClick={onClose}
             className={[
               "w-8 h-8 flex items-center justify-center rounded-lg",
-              "text-[var(--text-secondary)]",
-              "border border-[var(--border-subtle)]",
-              "hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)]",
+              "text-(--text-secondary)",
+              "border border-(--border-subtle)",
+              "hover:border-(--accent-primary) hover:text-(--accent-primary)",
               "transition-all duration-150",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary)",
             ].join(" ")}
             aria-label="Close navigation menu"
           >
@@ -193,10 +193,10 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
                   "py-3.5 px-4 rounded-lg",
                   "text-left font-medium",
                   "transition-all duration-150",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary)",
                   isActive
-                    ? "bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]"
-                    : "text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]",
+                    ? "bg-(--accent-primary)/10 text-(--accent-primary)"
+                    : "text-(--text-secondary) hover:bg-(--bg-hover) hover:text-(--text-primary)",
                 ].join(" ")}
                 style={{
                   animationDelay: `${i * 50}ms`,
@@ -204,7 +204,7 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
               >
                 {/* Index number */}
                 <span
-                  className="font-mono text-xs text-[var(--text-tertiary)] w-5 flex-shrink-0"
+                  className="font-mono text-xs text-(--text-tertiary) w-5 shrink-0"
                   aria-hidden="true"
                 >
                   {String(i + 1).padStart(2, "0")}
@@ -213,7 +213,7 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
 
                 {/* Active arrow */}
                 {isActive && (
-                  <span className="ml-auto text-[var(--accent-primary)]" aria-hidden="true">
+                  <span className="ml-auto text-(--accent-primary)" aria-hidden="true">
                     →
                   </span>
                 )}
@@ -223,10 +223,10 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
         </nav>
 
         {/* Menu footer — availability status */}
-        <div className="p-6 border-t border-[var(--border-subtle)]">
+        <div className="p-6 border-t border-(--border-subtle)">
           <div className="flex items-center gap-2 mb-4">
-            <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse-glow flex-shrink-0" />
-            <span className="text-xs font-mono text-[var(--text-secondary)] tracking-wide">
+            <span className="w-2 h-2 rounded-full bg-(--accent-primary) animate-pulse-glow shrink-0" />
+            <span className="text-xs font-mono text-(--text-secondary) tracking-wide">
               Available for opportunities
             </span>
           </div>
@@ -255,12 +255,12 @@ function Hamburger({ isOpen, onClick }) {
       className={[
         "relative flex flex-col items-center justify-center",
         "w-10 h-10 rounded-lg",
-        "border border-[var(--border-subtle)]",
-        "hover:border-[var(--accent-primary)]",
+        "border border-(--border-subtle)",
+        "hover:border-(--accent-primary)",
         "transition-all duration-200",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary)",
         "lg:hidden",
-        "gap-[5px]",
+        "gap-1.25",
       ].join(" ")}
       aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
       aria-expanded={isOpen}
@@ -270,7 +270,7 @@ function Hamburger({ isOpen, onClick }) {
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className="block w-4 h-[1.5px] bg-[var(--text-primary)] rounded-full origin-center transition-all duration-300"
+          className="block w-4 h-[1.5px] bg-(--text-primary) rounded-full origin-center transition-all duration-300"
           style={{
             transform: isOpen
               ? i === 0 ? "rotate(45deg) translate(3.5px, 3.5px)"
@@ -327,7 +327,7 @@ export default function Navbar() {
           "transition-all duration-300",
           // Scroll-aware background
           isScrolled
-            ? "bg-[var(--bg-primary)]/90 backdrop-blur-xl border-b border-[var(--border-subtle)] py-3"
+            ? "bg-(--bg-primary)/90 backdrop-blur-xl border-b border-(--border-subtle) py-3"
             : "bg-transparent border-b border-transparent py-5",
         ].join(" ")}
         role="banner"
@@ -357,10 +357,10 @@ export default function Navbar() {
             {PERSONAL_INFO.availability && (
               <div className="flex items-center gap-2 mr-2">
                 <span
-                  className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse-glow"
+                  className="w-2 h-2 rounded-full bg-(--accent-primary) animate-pulse-glow"
                   aria-hidden="true"
                 />
-                <span className="font-mono text-xs text-[var(--text-secondary)] tracking-wider">
+                <span className="font-mono text-xs text-(--text-secondary) tracking-wider">
                   Available
                 </span>
               </div>

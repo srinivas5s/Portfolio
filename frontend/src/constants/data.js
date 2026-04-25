@@ -7,7 +7,7 @@
 // ─── Personal Info ───────────────────────────────────────────
 export const PERSONAL_INFO = {
   name: "Srinivas",
-  lastName: "Kumar",       // update with your last name
+  lastName: "Senapati",       // update with your last name
   role: "Full Stack Developer",
   tagline: "I build scalable web apps & AI-powered products.",
   bio: [
@@ -276,7 +276,7 @@ export const NAV_LINKS = [
 
 // ─── Meta / SEO ───────────────────────────────────────────────
 export const META = {
-  title:       "Srinivas Kumar — Full Stack Developer",
+  title:       "Srinivas Senapati — Full Stack Developer",
   description: "Full Stack Developer specializing in MERN stack and AI-powered web applications. Based in India, open to remote opportunities.",
   keywords:    "full stack developer, MERN stack, React developer, Node.js, AI, portfolio",
   ogImage:     "/og-image.png",  // place in /public/
