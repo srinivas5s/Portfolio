@@ -42,7 +42,7 @@ function GridBackground() {
 
             {/* Lime glow — top left */}
             <div
-                className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full"
+                className="absolute -top-40 -left-40 w-150 h-150 rounded-full"
                 style={{
                     background: "radial-gradient(circle, rgba(232,255,71,0.07) 0%, transparent 65%)",
                 }}
@@ -50,7 +50,7 @@ function GridBackground() {
 
             {/* Violet glow — bottom right */}
             <div
-                className="absolute -bottom-60 -right-40 w-[700px] h-[700px] rounded-full"
+                className="absolute -bottom-60 -right-40 w-175 h-175 rounded-full"
                 style={{
                     background: "radial-gradient(circle, rgba(123,97,255,0.06) 0%, transparent 65%)",
                 }}
@@ -58,7 +58,7 @@ function GridBackground() {
 
             {/* Horizontal scan line — subtle editorial detail */}
             <div
-                className="absolute top-1/3 left-0 right-0 h-[1px] opacity-10"
+                className="absolute top-1/3 left-0 right-0 h-px opacity-10"
                 style={{
                     background: "linear-gradient(90deg, transparent, var(--accent-primary), transparent)",
                 }}
@@ -83,18 +83,18 @@ function FloatingCodeCard() {
             <div
                 className={[
                     "rounded-xl overflow-hidden",
-                    "border border-[var(--border-subtle)]",
-                    "bg-[var(--bg-card)]/90 backdrop-blur-sm",
+                    "border border-(--border-subtle)",
+                    "bg-(--bg-card)/90 backdrop-blur-sm",
                     "shadow-[0_24px_64px_rgba(0,0,0,0.5)]",
-                    "w-[280px]",
+                    "w-70",
                 ].join(" ")}
             >
                 {/* Terminal title bar */}
-                <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--border-subtle)] bg-[var(--bg-secondary)]">
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-(--border-subtle) bg-(--bg-secondary)">
                     <span className="w-3 h-3 rounded-full bg-red-500/70" />
                     <span className="w-3 h-3 rounded-full bg-amber-500/70" />
                     <span className="w-3 h-3 rounded-full bg-emerald-500/70" />
-                    <span className="ml-2 font-mono text-[10px] text-[var(--text-tertiary)] tracking-wide">
+                    <span className="ml-2 font-mono text-[10px] text-(--text-tertiary) tracking-wide">
                         portfolio.js
                     </span>
                 </div>
@@ -103,35 +103,35 @@ function FloatingCodeCard() {
                 <div className="px-4 py-4 font-mono text-[11px] leading-6 space-y-0.5">
                     <p>
                         <span className="text-[#7B61FF]">const </span>
-                        <span className="text-[var(--accent-primary)]">dev</span>
-                        <span className="text-[var(--text-secondary)]"> = {"{"}</span>
+                        <span className="text-(--accent-primary)">dev</span>
+                        <span className="text-(--text-secondary)"> = {"{"}</span>
                     </p>
                     <p className="pl-4">
-                        <span className="text-[var(--text-secondary)]">name: </span>
+                        <span className="text-(--text-secondary)">name: </span>
                         <span className="text-emerald-400">"{PERSONAL_INFO.name}"</span>
-                        <span className="text-[var(--text-secondary)]">,</span>
+                        <span className="text-(--text-secondary)">,</span>
                     </p>
                     <p className="pl-4">
-                        <span className="text-[var(--text-secondary)]">role: </span>
+                        <span className="text-(--text-secondary)">role: </span>
                         <span className="text-emerald-400">"Full Stack"</span>
-                        <span className="text-[var(--text-secondary)]">,</span>
+                        <span className="text-(--text-secondary)">,</span>
                     </p>
                     <p className="pl-4">
-                        <span className="text-[var(--text-secondary)]">open: </span>
+                        <span className="text-(--text-secondary)">open: </span>
                         <span className="text-[#FF6B35]">true</span>
-                        <span className="text-[var(--text-secondary)]">,</span>
+                        <span className="text-(--text-secondary)">,</span>
                     </p>
                     <p className="pl-4">
-                        <span className="text-[var(--text-secondary)]">coffee: </span>
+                        <span className="text-(--text-secondary)">coffee: </span>
                         <span className="text-[#FF6B35]">Infinity</span>
                     </p>
                     <p>
-                        <span className="text-[var(--text-secondary)]">{"}"}</span>
+                        <span className="text-(--text-secondary)">{"}"}</span>
                     </p>
                     <p className="pt-1">
                         <span className="text-[#7B61FF]">export default </span>
-                        <span className="text-[var(--accent-primary)]">dev</span>
-                        <span className="text-[var(--text-secondary)]">;</span>
+                        <span className="text-(--accent-primary)">dev</span>
+                        <span className="text-(--text-secondary)">;</span>
                     </p>
                 </div>
             </div>
@@ -163,7 +163,7 @@ function StatsStrip() {
                     {/* Divider — skip on first item */}
                     {i > 0 && (
                         <div
-                            className="w-[1px] h-7 bg-[var(--border-subtle)]"
+                            className="w-px h-7 bg-(--border-subtle)"
                             aria-hidden="true"
                         />
                     )}
@@ -172,12 +172,12 @@ function StatsStrip() {
                             className={[
                                 "block font-display font-bold",
                                 "text-xl tracking-tight",
-                                "text-[var(--accent-primary)]",
+                                "text-(--accent-primary)",
                             ].join(" ")}
                         >
                             {stat.value}
                         </span>
-                        <span className="block font-mono text-[10px] tracking-widest text-[var(--text-tertiary)] uppercase">
+                        <span className="block font-mono text-[10px] tracking-widest text-(--text-tertiary) uppercase">
                             {stat.label}
                         </span>
                     </div>
@@ -227,15 +227,15 @@ function SocialLinks() {
                         className={[
                             "w-10 h-10 rounded-lg",
                             "flex items-center justify-center",
-                            "border border-[var(--border-subtle)]",
+                            "border border-(--border-subtle)",
                             "font-mono text-xs font-bold",
-                            "text-[var(--text-secondary)]",
-                            "hover:border-[var(--accent-primary)]",
-                            "hover:text-[var(--accent-primary)]",
+                            "text-(--text-secondary)",
+                            "hover:border-(--accent-primary)",
+                            "hover:text-(--accent-primary)",
                             "hover:-translate-y-1",
                             "hover:shadow-[0_6px_20px_rgba(232,255,71,0.15)]",
                             "transition-all duration-200",
-                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]",
+                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary)",
                         ].join(" ")}
                     >
                         {link.short}
@@ -245,11 +245,11 @@ function SocialLinks() {
 
             {/* Separator line */}
             <div
-                className="w-10 h-[1px] bg-[var(--border-medium)]"
+                className="w-10 h-px bg-(--border-medium)"
                 aria-hidden="true"
             />
 
-            <span className="font-mono text-[10px] tracking-widest text-[var(--text-tertiary)] uppercase">
+            <span className="font-mono text-[10px] tracking-widest text-(--text-tertiary) uppercase">
                 Connect
             </span>
         </div>
@@ -272,7 +272,7 @@ function ScrollIndicator() {
             <div
                 className={[
                     "w-6 h-9 rounded-full",
-                    "border-2 border-[var(--border-medium)]",
+                    "border-2 border-(--border-medium)",
                     "flex items-start justify-center pt-1.5",
                 ].join(" ")}
             >
@@ -280,12 +280,12 @@ function ScrollIndicator() {
                 <div
                     className={[
                         "w-1 h-2 rounded-full",
-                        "bg-[var(--accent-primary)]",
+                        "bg-(--accent-primary)",
                         "animate-bounce",
                     ].join(" ")}
                 />
             </div>
-            <span className="font-mono text-[9px] tracking-[0.2em] text-[var(--text-tertiary)] uppercase">
+            <span className="font-mono text-[9px] tracking-[0.2em] text-(--text-tertiary) uppercase">
                 Scroll
             </span>
         </div>
@@ -307,7 +307,7 @@ export default function Hero() {
             className={[
                 "relative min-h-screen",
                 "flex items-center",
-                "bg-[var(--bg-primary)]",
+                "bg-(--bg-primary)",
                 "overflow-hidden",
             ].join(" ")}
             aria-label="Introduction"
@@ -336,12 +336,12 @@ export default function Hero() {
                         className={[
                             "animate-fade-up delay-100 opacity-0",
                             "font-mono text-xs tracking-[0.2em]",
-                            "text-[var(--text-tertiary)] uppercase",
+                            "text-(--text-tertiary) uppercase",
                             "mb-6",
                         ].join(" ")}
                     >
                         {PERSONAL_INFO.location}
-                        <span className="mx-2 text-[var(--border-medium)]">·</span>
+                        <span className="mx-2 text-(--border-medium)">·</span>
                         {PERSONAL_INFO.locationDetail}
                     </p>
 
@@ -352,12 +352,12 @@ export default function Hero() {
                             "font-display font-bold",
                             "text-[clamp(3.2rem,8vw,6.5rem)]",
                             "leading-[0.95] tracking-tight",
-                            "text-[var(--text-primary)]",
+                            "text-(--text-primary)",
                             "mb-6",
                         ].join(" ")}
                     >
                         {/* Greeting line */}
-                        <span className="block text-[var(--text-secondary)] text-[0.45em] font-mono font-normal tracking-[0.15em] uppercase mb-3">
+                        <span className="block text-(--text-secondary) text-[0.45em] font-mono font-normal tracking-[0.15em] uppercase mb-3">
                             Hello, I'm
                         </span>
 
@@ -373,8 +373,8 @@ export default function Hero() {
                             <span
                                 className={[
                                     "absolute -bottom-2 left-0",
-                                    "h-[4px] rounded-full",
-                                    "bg-[var(--accent-primary)]",
+                                    "h-1 rounded-full",
+                                    "bg-(--accent-primary)",
                                     "animate-fade-up delay-500 opacity-0",
                                 ].join(" ")}
                                 style={{ width: "60%" }}
@@ -394,7 +394,7 @@ export default function Hero() {
                     >
                         {/* Bracket prefix — terminal aesthetic */}
                         <span
-                            className="font-mono text-[var(--accent-primary)] text-xl leading-none"
+                            className="font-mono text-(--accent-primary) text-xl leading-none"
                             aria-hidden="true"
                         >
                             &gt;_
@@ -404,7 +404,7 @@ export default function Hero() {
                             className={[
                                 "font-display font-semibold italic",
                                 "text-xl sm:text-2xl",
-                                "text-[var(--text-primary)]",
+                                "text-(--text-primary)",
                                 "min-h-[1.4em]",           // prevents layout shift
                             ].join(" ")}
                         >
@@ -412,9 +412,9 @@ export default function Hero() {
                             {/* Blinking cursor */}
                             <span
                                 className={[
-                                    "cursor-blink ml-[2px]",
-                                    "inline-block w-[2px] h-[1.1em]",
-                                    "bg-[var(--accent-primary)]",
+                                    "cursor-blink ml-0.5",
+                                    "inline-block w-0.5 h-[1.1em]",
+                                    "bg-(--accent-primary)",
                                     "align-text-bottom",
                                     // Cursor solid while typing, blink while pausing
                                     isTyping ? "opacity-100" : "",
@@ -428,7 +428,7 @@ export default function Hero() {
                     <p
                         className={[
                             "animate-fade-up delay-400 opacity-0",
-                            "text-[var(--text-secondary)]",
+                            "text-(--text-secondary)",
                             "text-lg sm:text-xl",
                             "leading-relaxed",
                             "max-w-xl",
@@ -436,7 +436,7 @@ export default function Hero() {
                         ].join(" ")}
                     >
                         {PERSONAL_INFO.tagline}{" "}
-                        <span className="text-[var(--text-primary)] font-medium">
+                        <span className="text-(--text-primary) font-medium">
                             Based in India, open to remote.
                         </span>
                     </p>
