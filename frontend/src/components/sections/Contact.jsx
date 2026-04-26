@@ -21,7 +21,7 @@ import Badge                            from "../ui/Badge";
    3. Replace "YOUR_FORM_ID" below with your actual ID
    4. Formspree will email you every submission for free
    ─────────────────────────────────────────────────────────── */
-const FORMSPREE_ID = "YOUR_FORM_ID";
+const FORMSPREE_ID = "xlgakevy";
 const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
 
 // ─── Validation ───────────────────────────────────────────────

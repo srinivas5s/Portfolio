@@ -144,7 +144,7 @@ function FloatingCodeCard() {
 function StatsStrip() {
     const stats = [
         { value: "3+", label: "Years" },
-        { value: "15+", label: "Projects" },
+        { value: "5+", label: "Projects" },
         { value: "8+", label: "Tech Stack" },
     ];
 
