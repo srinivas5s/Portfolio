@@ -201,10 +201,15 @@ function SocialLinks() {
             href: PERSONAL_INFO.socials.linkedin,
         },
         {
+            label: "Instagram",
+            short: "IG",
+            href: PERSONAL_INFO.socials.instagram,
+        },
+        {
             label: "Email",
             short: "@",
             href: `mailto:${PERSONAL_INFO.email}`,
-        },
+        }
     ].filter((l) => l.href);
 
     return (

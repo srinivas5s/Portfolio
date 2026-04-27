@@ -9,7 +9,7 @@ export const PERSONAL_INFO = {
   name: "Srinivas",
   lastName: "Senapati",       // update with your last name
   role: "Full Stack Developer",
-  tagline: "I build scalable web apps & AI-powered products.",
+  tagline: "Building scalable web apps today, learning AI for tomorrow.",
   bio: [
     "I'm a full stack developer specializing in the MERN stack — passionate about building products that are both technically excellent and genuinely useful to people.",
     "Currently exploring the intersection of AI and web development: integrating LLMs, building intelligent workflows, and turning complex ideas into clean, performant interfaces.",
@@ -22,9 +22,9 @@ export const PERSONAL_INFO = {
 
   // Social links
   socials: {
-    github:   "https://github.com/srinivas5s",
+    github: "https://github.com/srinivas5s",
     linkedin: "https://www.linkedin.com/in/p-srinivas-senapati-6a0207251/",
-    twitter:  "https://twitter.com/yourusername",  // optional
+    instagram: "https://www.instagram.com/_.srinu_._",
   },
 };
 
@@ -33,40 +33,40 @@ export const PERSONAL_INFO = {
 export const TYPEWRITER_ROLES = [
   "Full Stack Developer",
   "MERN Stack Engineer",
-  "Machine Learning Engineer",
+  "Aspiring AI Learning Engineer",
   "Problem Solver",
-  "Open Source Contributor",
+  "Quick Learner",
 ];
 
 // ─── Stats — shown in About section ─────────────────────────
 export const STATS = [
-  { value: "3+",  label: "Years Coding"    },
-  { value: "5+", label: "Projects Shipped" },
-  { value: "8+",  label: "Tech Stack"       },
-  { value: "∞",   label: "Curiosity"        },
+  { value: "3+", label: "Years Coding" },
+  { value: "4+", label: "Projects Built" },
+  { value: "8+", label: "Technologies" },
+  { value: "∞", label: "Curiosity" },
 ];
 
 // ─── About Cards ────────────────────────────────────────────
 export const ABOUT_CARDS = [
   {
     icon: "⚡",
-    title: "Full Stack Engineering",
-    desc:  "End-to-end MERN stack — REST APIs, auth, databases, and pixel-perfect frontends.",
+    title: "MERN Stack Development",
+    desc: "Building full-stack web apps using MongoDB, Express, React, and Node.js.",
   },
   {
     icon: "🤖",
-    title: "AI Integration",
-    desc:  "Building intelligent apps with LLMs, AI APIs, and smart automation workflows.",
+    title: "AI Learning Journey",
+    desc: "Currently exploring AI concepts and learning how to integrate AI into web apps.",
   },
   {
     icon: "🧠",
-    title: "System Thinking",
-    desc:  "Breaking complex problems into clean, maintainable, and scalable architecture.",
+    title: "Problem Solving",
+    desc: "Strong focus on logic building, DSA, and writing clean, maintainable code.",
   },
   {
     icon: "📐",
-    title: "UI Craft",
-    desc:  "Obsessive about details — typography, spacing, motion, and user experience.",
+    title: "Frontend Focus",
+    desc: "Creating responsive and user-friendly interfaces with attention to UI/UX.",
   },
 ];
 
@@ -78,8 +78,8 @@ export const SKILLS = [
     color: "#E8FF47",   // lime
     icon: "◈",
     items: [
-      { name: "React",        level: 90 },
-      { name: "JavaScript",   level: 88 },
+      { name: "React", level: 90 },
+      { name: "JavaScript", level: 88 },
       { name: "Tailwind CSS", level: 85 },
       { name: "HTML5 / CSS3", level: 92 },
     ],
@@ -89,10 +89,10 @@ export const SKILLS = [
     color: "#7B61FF",   // violet
     icon: "◉",
     items: [
-      { name: "Node.js",   level: 85 },
-      { name: "Express.js",level: 85 },
+      { name: "Node.js", level: 85 },
+      { name: "Express.js", level: 85 },
       { name: "REST APIs", level: 90 },
-      { name: "JWT Auth",  level: 80 },
+      { name: "JWT Auth", level: 80 },
       { name: "Socket.io", level: 65 },
     ],
   },
@@ -101,20 +101,20 @@ export const SKILLS = [
     color: "#FF6B35",   // orange
     icon: "◎",
     items: [
-      { name: "MongoDB",   level: 85 },
-      { name: "Mongoose",  level: 82 },
-      { name: "Firebase",  level: 72 },
-      { name: "SQL Basics",level: 60 },
+      { name: "MongoDB", level: 85 },
+      { name: "Mongoose", level: 82 },
+      { name: "Firebase", level: 72 },
+      { name: "SQL Basics", level: 60 },
     ],
   },
   {
-    category: "AI & Tools",
+    category: "Tools & Technologies",
     color: "#00D4AA",   // teal
     icon: "◇",
     items: [
       { name: "Git / GitHub", level: 88 },
-      { name: "Postman",      level: 82 },
-      { name: "Vite / Vercel",level: 80 },
+      { name: "Postman", level: 82 },
+      { name: "Vite / Vercel", level: 80 },
     ],
   },
 ];
@@ -143,23 +143,23 @@ export const PROJECTS = [
   //   status: "Live",  // "Live" | "In Progress" | "Archived"
   // },
   {
-    id: "ai-elearning",
+    id: "E-learning",
     featured: true,
     emoji: "🤖",
     accentColor: "#7B61FF",
     title: "LearnAI — Adaptive E-Learning",
-    shortDesc: "AI-powered learning platform that adapts to your progress.",
+    shortDesc: "A Learning platform that adapts to your progress.",
     longDesc:
       "An intelligent e-learning platform integrating OpenAI GPT-4 to generate personalized quizzes, summarize lecture content, and adapt course difficulty based on user performance analytics.",
-    stack: ["React", "Node.js", "MongoDB", "OpenAI API", "Chart.js"],
+    stack: ["React", "Node.js", "MongoDB"],
     highlights: [
       "GPT-4 powered quiz generation",
       "Adaptive difficulty algorithm",
       "Progress analytics with Chart.js",
       "Course content summarization with AI",
     ],
-    github: "https://github.com/yourusername/learnai",
-    live:   "https://learnai.vercel.app",
+    github: "https://github.com/srinivas5s/LMS",
+    live: "https://srinivas-senapati-portfolio.vercel.app",
     status: "In Progress",
   },
   // {
@@ -207,10 +207,10 @@ export const PROJECTS = [
 // ─── GitHub Stats ─────────────────────────────────────────────
 // These are display values — connect GitHub API in GitHub.jsx for real data
 export const GITHUB_STATS = [
-  { value: "10+", label: "Contributions",   icon: "📦" },
-  { value: "5+",  label: "Repositories",    icon: "🗂️" },
-  { value: "4+",   label: "Languages",       icon: "🌐" },
-  { value: "50+",  label: "Commits / Month", icon: "🔁" },
+  { value: "3+", label: "Contributions", icon: "📦" },
+  { value: "5+", label: "Repositories", icon: "🗂️" },
+  { value: "4+", label: "Languages", icon: "🌐" },
+  { value: "20+", label: "Commits", icon: "🔁" },
 ];
 
 export const GITHUB_USERNAME = "srinivas5s"; // used to build profile links
@@ -232,56 +232,57 @@ export const EXPERIENCE = [
 // ─── Education ───────────────────────────────────────────────
 export const EDUCATION = [
   {
-    degree:  "Master of Computer Applications (MCA)",
-    school:  "Trident Academy of Technology, Bhubaneswar",
-    period:  "2025 – Present",
-    grade:   "9.1 SGPA",
-    desc:    "Focused on data structures, algorithms, and software engineering principles.",
+    degree: "Master of Computer Applications (MCA)",
+    school: "Trident Academy of Technology, Bhubaneswar",
+    period: "2025 – Present",
+    grade: "9.1 SGPA",
+    desc: "Focused on data structures, algorithms, and software engineering principles.",
   },
   {
-    degree:  "Bachelor of Computer Applications (BCA)",
-    school:  "Academy of Technocrats, Berhampur",
-    period:  "2022 – 2025",
-    grade:   "8.4 CGPA",
-    desc:    "Studied fundamental concepts in computer science and software development.",
+    degree: "Bachelor of Computer Applications (BCA)",
+    school: "Academy of Technocrats, Berhampur",
+    period: "2022 – 2025",
+    grade: "8.4 CGPA",
+    desc: "Studied fundamental concepts in computer science and software development.",
   },
 ];
 
 // ─── Contact Info ─────────────────────────────────────────────
 export const CONTACT_INFO = [
   {
-    icon:  "✉️",
+    icon: "✉️",
     label: "Email",
     value: "work.srinivas.dev@gmail.com",
-    href:  "mailto:work.srinivas.dev@gmail.com",
+    href: "mailto:work.srinivas.dev@gmail.com",
   },
   {
-    icon:  "💼",
+    icon: "💼",
     label: "LinkedIn",
     value: "linkedin.com/in/p-srinivas-senapati",
-    href:  "https://www.linkedin.com/in/p-srinivas-senapati-6a0207251/",
+    href: "https://www.linkedin.com/in/p-srinivas-senapati-6a0207251/",
   },
   {
-    icon:  "🐙",
+    icon: "🐙",
     label: "GitHub",
     value: "github.com/srinivas5s",
-    href:  "https://github.com/srinivas5s",
+    href: "https://github.com/srinivas5s",
   },
 ];
 
 // ─── Navigation Links ────────────────────────────────────────
 export const NAV_LINKS = [
-  { label: "Home",     href: "hero"     },
-  { label: "About",    href: "about"    },
-  { label: "Skills",   href: "skills"   },
+  { label: "Home", href: "hero" },
+  { label: "About", href: "about" },
+  { label: "Skills", href: "skills" },
   { label: "Projects", href: "projects" },
-  { label: "Contact",  href: "contact"  },
+  { label: "Contact", href: "contact" },
 ];
 
 // ─── Meta / SEO ───────────────────────────────────────────────
 export const META = {
-  title:       "Srinivas Senapati — Full Stack Developer",
-  description: "Full Stack Developer specializing in MERN stack and AI-powered web applications. Based in India, open to remote opportunities.",
-  keywords:    "full stack developer, MERN stack, React developer, Node.js, AI, portfolio",
-  ogImage:     "/og-image.png",  // place in /public/
+  title: "Srinivas Senapati — MERN Stack Developer",
+  description:
+    "Fresher MERN Stack Developer skilled in building full-stack web applications and exploring AI integration. Open to opportunities.",
+  keywords: "full stack developer, MERN stack, React developer, Node.js, AI, portfolio",
+  ogImage: "/og-image.png",  // place in /public/
 };
