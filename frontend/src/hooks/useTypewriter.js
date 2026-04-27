@@ -14,11 +14,11 @@ import { useState, useEffect, useCallback, useRef } from "react";
 
 // ─── Constants ───────────────────────────────────────────────
 const DEFAULT_OPTIONS = {
-  typeSpeed:     80,    // ms per character while typing
-  deleteSpeed:   40,    // ms per character while deleting (faster = snappier)
+  typeSpeed: 80,    // ms per character while typing
+  deleteSpeed: 40,    // ms per character while deleting (faster = snappier)
   pauseDuration: 2200,  // ms to pause at end of fully typed word
-  startDelay:    600,   // ms delay before animation begins on mount
-  loop:          true,  // whether to loop through texts indefinitely
+  startDelay: 600,   // ms delay before animation begins on mount
+  loop: true,  // whether to loop through texts indefinitely
 };
 
 // ─── Hook ────────────────────────────────────────────────────
@@ -33,12 +33,12 @@ export function useTypewriter(texts = [], options = {}) {
   const config = { ...DEFAULT_OPTIONS, ...options };
 
   // ── State ──────────────────────────────────────────────────
-  const [displayText,   setDisplayText]   = useState("");
-  const [currentIndex,  setCurrentIndex]  = useState(0);
-  const [isDeleting,    setIsDeleting]    = useState(false);
-  const [isTyping,      setIsTyping]      = useState(false);
-  const [isPaused,      setIsPaused]      = useState(false);
-  const [hasStarted,    setHasStarted]    = useState(false);
+  const [displayText, setDisplayText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   // Ref to store timeout ID so we can clean it up properly
   const timeoutRef = useRef(null);

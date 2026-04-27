@@ -41,7 +41,7 @@ function HighlightedTitle({ title, accent }) {
           // Accent word — lime color with italic Fraunces serif
           <span
             key={i}
-            className="text-[var(--accent-primary)] italic"
+            className="text-(--accent-primary) italic"
             aria-hidden="false"
           >
             {part}
@@ -67,7 +67,7 @@ function SectionNumber({ number }) {
         "absolute -top-8 -left-2",
         "font-display font-bold",
         "text-[8rem] leading-none",
-        "text-[var(--text-primary)]/[0.03]",
+        "text-(--text-primary)/3",
         "select-none pointer-events-none",
         "hidden lg:block",           // only on large screens
       ].join(" ")}
@@ -93,14 +93,14 @@ function SectionNumber({ number }) {
  * @prop {ReactNode} children   - Optional content below subtitle
  */
 function SectionHeader({
-  label        = "",
-  title        = "",
-  subtitle     = "",
-  titleAccent  = "",
-  align        = "left",
-  number       = null,
-  labelColor   = null,
-  className    = "",
+  label = "",
+  title = "",
+  subtitle = "",
+  titleAccent = "",
+  align = "left",
+  number = null,
+  labelColor = null,
+  className = "",
   children,
 }) {
   const isCenter = align === "center";
@@ -156,7 +156,7 @@ function SectionHeader({
         <p
           className={[
             "reveal reveal-delay-2",
-            "text-[var(--text-secondary)]",
+            "text-(--text-secondary)",
             "text-base sm:text-lg",
             "leading-relaxed",
             "max-w-xl",

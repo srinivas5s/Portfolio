@@ -46,7 +46,7 @@ function SocialLink({ href, icon, label }) {
       className={[
         "w-9 h-9 rounded-lg",
         "flex items-center justify-center",
-        "border border-[var(--border-subtle)]",
+        "border border-(--border-subtle)",
         "text-[var(--text-secondary)]",
         "hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)]",
         "hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(232,255,71,0.15)]",
@@ -113,27 +113,27 @@ export default function Footer() {
   // Social links assembled from PERSONAL_INFO
   const socialLinks = [
     {
-      key:   "github",
-      href:  PERSONAL_INFO.socials.github,
-      icon:  SOCIAL_ICONS.github,
+      key: "github",
+      href: PERSONAL_INFO.socials.github,
+      icon: SOCIAL_ICONS.github,
       label: "GitHub profile",
     },
     {
-      key:   "linkedin",
-      href:  PERSONAL_INFO.socials.linkedin,
-      icon:  SOCIAL_ICONS.linkedin,
+      key: "linkedin",
+      href: PERSONAL_INFO.socials.linkedin,
+      icon: SOCIAL_ICONS.linkedin,
       label: "LinkedIn profile",
     },
     {
-      key:   "twitter",
-      href:  PERSONAL_INFO.socials.twitter,
-      icon:  SOCIAL_ICONS.twitter,
+      key: "twitter",
+      href: PERSONAL_INFO.socials.twitter,
+      icon: SOCIAL_ICONS.twitter,
       label: "Twitter / X profile",
     },
     {
-      key:   "email",
-      href:  `mailto:${PERSONAL_INFO.email}`,
-      icon:  SOCIAL_ICONS.email,
+      key: "email",
+      href: `mailto:${PERSONAL_INFO.email}`,
+      icon: SOCIAL_ICONS.email,
       label: "Send email",
     },
   ].filter((s) => s.href); // hide links with no URL set
@@ -257,30 +257,30 @@ export default function Footer() {
             <ul className="space-y-3">
               {CONTACT_INFO.map((item) => (
                 <li key={item.label}>
-  <a
-    href={item.href}
-    target={item.href.startsWith("http") ? "_blank" : undefined}
-    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-    className={[
-      "flex items-center gap-2.5 group",
-      "text-sm text-[var(--text-secondary)]",
-      "hover:text-[var(--accent-primary)]",
-      "transition-colors duration-150",
-    ].join(" ")}
-  >
-    <span className="text-base flex-shrink-0" aria-hidden="true">
-      {item.icon}
-    </span>
-    <span className="truncate">{item.value}</span>
+                  <a
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className={[
+                      "flex items-center gap-2.5 group",
+                      "text-sm text-[var(--text-secondary)]",
+                      "hover:text-[var(--accent-primary)]",
+                      "transition-colors duration-150",
+                    ].join(" ")}
+                  >
+                    <span className="text-base flex-shrink-0" aria-hidden="true">
+                      {item.icon}
+                    </span>
+                    <span className="truncate">{item.value}</span>
 
-    <span
-      className="ml-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-150 text-xs"
-      aria-hidden="true"
-    >
-      →
-    </span>
-  </a>
-</li>
+                    <span
+                      className="ml-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-150 text-xs"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </a>
+                </li>
               ))}
             </ul>
           </div>

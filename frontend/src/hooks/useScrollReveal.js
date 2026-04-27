@@ -17,10 +17,10 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 // ─── Default Observer Options ────────────────────────────────
 const DEFAULT_OPTIONS = {
-  threshold:   0.12,   // % of element visible before triggering
-  rootMargin:  "0px",  // margin around root viewport
+  threshold: 0.12,   // % of element visible before triggering
+  rootMargin: "0px",  // margin around root viewport
   triggerOnce: true,   // if true, won't re-hide on scroll up (recommended)
-  className:   "in-view", // class toggled on the element
+  className: "in-view", // class toggled on the element
 };
 
 // ─── Hook ────────────────────────────────────────────────────
@@ -59,7 +59,7 @@ export function useScrollReveal(ref = null, options = {}) {
         }
       },
       {
-        threshold:  config.threshold,
+        threshold: config.threshold,
         rootMargin: config.rootMargin,
       }
     );
@@ -114,7 +114,7 @@ export function useGlobalScrollReveal(options = {}) {
           });
         },
         {
-          threshold:  config.threshold,
+          threshold: config.threshold,
           rootMargin: config.rootMargin,
         }
       );
@@ -153,13 +153,13 @@ export function useStaggerReveal(containerRef, options = {}) {
     if (!containerRef?.current) return;
 
     const container = containerRef.current;
-    const children  = Array.from(container.children);
+    const children = Array.from(container.children);
 
     // Set initial hidden state and stagger delay on each child
     children.forEach((child, index) => {
-      child.style.opacity         = "0";
-      child.style.transform       = "translateY(24px)";
-      child.style.transition      = `opacity 0.6s ease ${index * staggerMs}ms, transform 0.6s ease ${index * staggerMs}ms`;
+      child.style.opacity = "0";
+      child.style.transform = "translateY(24px)";
+      child.style.transition = `opacity 0.6s ease ${index * staggerMs}ms, transform 0.6s ease ${index * staggerMs}ms`;
     });
 
     const observer = new IntersectionObserver(
@@ -167,7 +167,7 @@ export function useStaggerReveal(containerRef, options = {}) {
         if (entry.isIntersecting) {
           // Reveal all children — CSS transition + delay handles stagger
           children.forEach((child) => {
-            child.style.opacity   = "1";
+            child.style.opacity = "1";
             child.style.transform = "translateY(0)";
           });
 
@@ -175,7 +175,7 @@ export function useStaggerReveal(containerRef, options = {}) {
         } else if (!triggerOnce) {
           // Reset children if scrolled back up
           children.forEach((child) => {
-            child.style.opacity   = "0";
+            child.style.opacity = "0";
             child.style.transform = "translateY(24px)";
           });
         }
@@ -203,8 +203,8 @@ export function useScrollProgress() {
   const [scrollPct, setScrollPct] = useState(0);
 
   const handleScroll = useCallback(() => {
-    const el     = document.documentElement;
-    const top    = el.scrollTop || document.body.scrollTop;
+    const el = document.documentElement;
+    const top = el.scrollTop || document.body.scrollTop;
     const height = el.scrollHeight - el.clientHeight;
 
     // Guard against division by zero on very short pages
@@ -257,7 +257,7 @@ export function useActiveSection(sectionIds = []) {
           }
         },
         {
-          threshold:  0.4,
+          threshold: 0.4,
           // Shrink the root viewport so section activates
           // when it's well into view, not just barely visible
           rootMargin: "-10% 0px -10% 0px",

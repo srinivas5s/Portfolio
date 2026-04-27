@@ -4,11 +4,13 @@
    ============================================================ */
 
 import { useState, useEffect, useRef } from "react";
-import { NAV_LINKS, PERSONAL_INFO }    from "../../constants/data";
-import { useActiveSection,
-         useScrollProgress }           from "../../hooks/useScrollReveal";
-import { useTheme }                    from "../../context/ThemeContext";
-import Button                          from "../ui/Button";
+import { NAV_LINKS, PERSONAL_INFO } from "../../constants/data";
+import {
+  useActiveSection,
+  useScrollProgress
+} from "../../hooks/useScrollReveal";
+import { useTheme } from "../../context/ThemeContext";
+import Button from "../ui/Button";
 
 // ─── Theme Toggle ─────────────────────────────────────────────
 // ─── Theme Toggle ─────────────────────────────────────────────
@@ -21,20 +23,20 @@ function ThemeToggle() {
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       aria-pressed={!isDark}
       style={{
-        position:        "relative",
-        display:         "flex",
-        alignItems:      "center",
-        width:           "52px",
-        height:          "28px",
-        borderRadius:    "100px",
+        position: "relative",
+        display: "flex",
+        alignItems: "center",
+        width: "52px",
+        height: "28px",
+        borderRadius: "100px",
         backgroundColor: isDark ? "#1C1C28" : "#EDEBE6",
-        border:          isDark
-                           ? "1px solid rgba(255,255,255,0.12)"
-                           : "1px solid rgba(0,0,0,0.12)",
-        cursor:          "pointer",
-        flexShrink:      0,
-        transition:      "background-color 0.4s ease, border-color 0.4s ease",
-        outline:         "none",
+        border: isDark
+          ? "1px solid rgba(255,255,255,0.12)"
+          : "1px solid rgba(0,0,0,0.12)",
+        cursor: "pointer",
+        flexShrink: 0,
+        transition: "background-color 0.4s ease, border-color 0.4s ease",
+        outline: "none",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow = isDark
@@ -49,19 +51,19 @@ function ThemeToggle() {
       <span
         aria-hidden="true"
         style={{
-          position:        "absolute",
-          top:             "3px",
-          left:            "3px",
-          width:           "20px",
-          height:          "20px",
-          borderRadius:    "50%",
+          position: "absolute",
+          top: "3px",
+          left: "3px",
+          width: "20px",
+          height: "20px",
+          borderRadius: "50%",
           backgroundColor: isDark ? "#7B61FF" : "#6B48FF",
-          display:         "flex",
-          alignItems:      "center",
-          justifyContent:  "center",
-          boxShadow:       "0 2px 8px rgba(0,0,0,0.25)",
-          transform:       isDark ? "translateX(0px)" : "translateX(24px)",
-          transition:      "transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background-color 0.3s ease",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.25)",
+          transform: isDark ? "translateX(0px)" : "translateX(24px)",
+          transition: "transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background-color 0.3s ease",
         }}
       >
         {isDark ? (
@@ -170,7 +172,7 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
           "bg-(--bg-primary)/80 backdrop-blur-sm",
           "transition-opacity duration-300",
           isOpen ? "opacity-100 pointer-events-auto"
-                 : "opacity-0 pointer-events-none",
+            : "opacity-0 pointer-events-none",
         ].join(" ")} />
 
       {/* Panel */}
@@ -210,7 +212,7 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
               <svg viewBox="0 0 16 16" fill="none"
                 className="w-4 h-4" aria-hidden="true">
                 <path d="M3 3l10 10M13 3L3 13" stroke="currentColor"
-                  strokeWidth="1.5" strokeLinecap="round"/>
+                  strokeWidth="1.5" strokeLinecap="round" />
               </svg>
             </button>
           </div>
@@ -296,8 +298,8 @@ function Hamburger({ isOpen, onClick }) {
           style={{
             transform: isOpen
               ? i === 0 ? "rotate(45deg) translate(3.5px,3.5px)"
-              : i === 2 ? "rotate(-45deg) translate(3.5px,-3.5px)"
-              : "none"
+                : i === 2 ? "rotate(-45deg) translate(3.5px,-3.5px)"
+                  : "none"
               : "none",
             opacity: isOpen && i === 1 ? 0 : 1,
           }}
@@ -310,11 +312,11 @@ function Hamburger({ isOpen, onClick }) {
 
 // ─── Main Navbar ──────────────────────────────────────────────
 export default function Navbar() {
-  const [menuOpen,   setMenuOpen]   = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const sectionIds    = NAV_LINKS.map((l) => l.href);
+  const sectionIds = NAV_LINKS.map((l) => l.href);
   const activeSection = useActiveSection(sectionIds);
-  const scrollPct     = useScrollProgress();
+  const scrollPct = useScrollProgress();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
@@ -342,8 +344,8 @@ export default function Navbar() {
             : "border-b border-transparent py-5",
         ].join(" ")}
         style={isScrolled ? {
-          background:   "var(--nav-bg)",
-          borderColor:  "var(--nav-border)",
+          background: "var(--nav-bg)",
+          borderColor: "var(--nav-border)",
         } : {}}
       >
         <div className="container-main flex items-center justify-between">

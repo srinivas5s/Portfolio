@@ -7,19 +7,21 @@
    - Staggered card entrance
    ============================================================ */
 
-import { useRef, useState, useEffect }  from "react";
-import { SKILLS }                       from "../../constants/data";
-import { useScrollReveal,
-         useStaggerReveal }             from "../../hooks/useScrollReveal";
-import SectionHeader                    from "../ui/SectionHeader";
-import Badge                            from "../ui/Badge";
+import { useRef, useState, useEffect } from "react";
+import { SKILLS } from "../../constants/data";
+import {
+  useScrollReveal,
+  useStaggerReveal
+} from "../../hooks/useScrollReveal";
+import SectionHeader from "../ui/SectionHeader";
+import Badge from "../ui/Badge";
 
 // ─── Proficiency Legend ───────────────────────────────────────
 const PROFICIENCY_LEVELS = [
-  { label: "Familiar",     min: 0,  max: 65,  color: "#4A4A5A" },
-  { label: "Proficient",   min: 65, max: 80,  color: "#7B61FF" },
-  { label: "Advanced",     min: 80, max: 90,  color: "#00D4AA" },
-  { label: "Expert",       min: 90, max: 100, color: "#E8FF47" },
+  { label: "Familiar", min: 0, max: 65, color: "#4A4A5A" },
+  { label: "Proficient", min: 65, max: 80, color: "#7B61FF" },
+  { label: "Advanced", min: 80, max: 90, color: "#00D4AA" },
+  { label: "Expert", min: 90, max: 100, color: "#E8FF47" },
 ];
 
 function getProficiencyLabel(level) {
@@ -122,12 +124,12 @@ function SkillBar({ name, level, categoryColor, animate, index }) {
           className="absolute inset-y-0 left-0 rounded-full"
           style={{
             // Animate width from 0 to level on trigger
-            width:      animate ? `${level}%` : "0%",
+            width: animate ? `${level}%` : "0%",
             background: `linear-gradient(90deg, ${categoryColor}99, ${categoryColor})`,
             transition: animate
               ? `width 0.9s cubic-bezier(0.4, 0, 0.2, 1) ${index * 60}ms`
               : "none",
-            boxShadow:  animate ? `0 0 8px ${categoryColor}60` : "none",
+            boxShadow: animate ? `0 0 8px ${categoryColor}60` : "none",
           }}
         />
 
@@ -153,7 +155,7 @@ function SkillBar({ name, level, categoryColor, animate, index }) {
 // ─── Category Card ────────────────────────────────────────────
 function CategoryCard({ category, color, icon, items }) {
   // Ref for this card — triggers bar animation when card enters view
-  const cardRef  = useRef(null);
+  const cardRef = useRef(null);
   const isVisible = useScrollReveal(cardRef, { threshold: 0.2 });
 
   return (
@@ -177,7 +179,7 @@ function CategoryCard({ category, color, icon, items }) {
             style={{
               background: `${color}15`,
               color,
-              border:     `1px solid ${color}30`,
+              border: `1px solid ${color}30`,
             }}
             aria-hidden="true"
           >

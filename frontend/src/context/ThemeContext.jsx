@@ -29,7 +29,7 @@ export function ThemeProvider({ children }) {
   const toggleTheme = () =>
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
 
-  const isDark  = theme === "dark";
+  const isDark = theme === "dark";
   const isLight = theme === "light";
 
   return (

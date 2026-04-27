@@ -30,15 +30,15 @@ const VARIANTS = {
   status: {
     Live: {
       wrapper: "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium font-mono bg-emerald-400/10 text-emerald-400 border border-emerald-400/20",
-      dot:     "bg-emerald-400",
+      dot: "bg-emerald-400",
     },
     "In Progress": {
       wrapper: "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium font-mono bg-amber-400/10 text-amber-400 border border-amber-400/20",
-      dot:     "bg-amber-400 animate-pulse",
+      dot: "bg-amber-400 animate-pulse",
     },
     Archived: {
       wrapper: "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium font-mono bg-[var(--text-tertiary)]/10 text-[var(--text-tertiary)] border border-[var(--text-tertiary)]/20",
-      dot:     "bg-[var(--text-tertiary)]",
+      dot: "bg-[var(--text-tertiary)]",
     },
   },
 
@@ -125,12 +125,12 @@ function AccentDash({ color }) {
  * @prop {ReactNode}children  - Badge label text
  */
 function Badge({
-  variant   = "outline",
-  status    = "Live",
-  dot       = false,
-  dash      = false,
-  color     = null,
-  icon      = null,
+  variant = "outline",
+  status = "Live",
+  dot = false,
+  dash = false,
+  color = null,
+  icon = null,
   className = "",
   children,
   ...rest

@@ -275,41 +275,41 @@ const Button = forwardRef(function Button(
     );
 
     // ── Anchor variant — for nav links and external URLs ───────
-   if (href) {
-    const anchorProps = external
-        ? { target: "_blank", rel: "noopener noreferrer" }
-        : {};
+    if (href) {
+        const anchorProps = external
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {};
 
+        return (
+            <a
+                ref={ref}
+                href={disabled || loading ? undefined : href}
+                className={classes}
+                aria-disabled={disabled || loading}
+                onClick={disabled || loading ? (e) => e.preventDefault() : onClick}
+                {...anchorProps}
+                {...rest}
+            >
+                {content}
+            </a>
+        );
+    }
+
+    // ── Button element ─────────────────────────────────────────
     return (
-        <a
+        <button
             ref={ref}
-            href={disabled || loading ? undefined : href}
+            type={rest.type ?? "button"}
             className={classes}
+            disabled={disabled || loading}
             aria-disabled={disabled || loading}
-            onClick={disabled || loading ? (e) => e.preventDefault() : onClick}
-            {...anchorProps}
+            aria-busy={loading}
+            onClick={onClick}
             {...rest}
         >
             {content}
-        </a>
+        </button>
     );
-}
-
-// ── Button element ─────────────────────────────────────────
-return (
-    <button
-        ref={ref}
-        type={rest.type ?? "button"}
-        className={classes}
-        disabled={disabled || loading}
-        aria-disabled={disabled || loading}
-        aria-busy={loading}
-        onClick={onClick}
-        {...rest}
-    >
-        {content}
-    </button>
-);
 });
 
 // ─── Named Icon Exports ───────────────────────────────────────

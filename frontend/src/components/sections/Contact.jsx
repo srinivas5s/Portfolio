@@ -8,12 +8,12 @@
    - Availability status
    ============================================================ */
 
-import { useState, useRef }             from "react";
-import { PERSONAL_INFO, CONTACT_INFO }  from "../../constants/data";
-import { useStaggerReveal }             from "../../hooks/useScrollReveal";
-import SectionHeader                    from "../ui/SectionHeader";
-import Button                           from "../ui/Button";
-import Badge                            from "../ui/Badge";
+import { useState, useRef } from "react";
+import { PERSONAL_INFO, CONTACT_INFO } from "../../constants/data";
+import { useStaggerReveal } from "../../hooks/useScrollReveal";
+import SectionHeader from "../ui/SectionHeader";
+import Button from "../ui/Button";
+import Badge from "../ui/Badge";
 
 /* ── SETUP INSTRUCTIONS ──────────────────────────────────────
    1. Go to https://formspree.io and create a free account
@@ -27,7 +27,7 @@ const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
 // ─── Validation ───────────────────────────────────────────────
 const VALIDATORS = {
   name: (v) => {
-    if (!v.trim())          return "Name is required.";
+    if (!v.trim()) return "Name is required.";
     if (v.trim().length < 2) return "Name must be at least 2 characters.";
     return null;
   },
@@ -41,7 +41,7 @@ const VALIDATORS = {
     return null;
   },
   message: (v) => {
-    if (!v.trim())           return "Message is required.";
+    if (!v.trim()) return "Message is required.";
     if (v.trim().length < 20) return "Message must be at least 20 characters.";
     return null;
   },
@@ -60,7 +60,7 @@ function validate(fields) {
 function FormField({
   label,
   id,
-  type       = "text",
+  type = "text",
   value,
   onChange,
   onBlur,
@@ -68,11 +68,11 @@ function FormField({
   touched,
   placeholder,
   rows,
-  required   = false,
+  required = false,
 }) {
-  const isTextarea  = type === "textarea";
-  const hasError    = touched && error;
-  const isValid     = touched && !error && value;
+  const isTextarea = type === "textarea";
+  const hasError = touched && error;
+  const isValid = touched && !error && value;
 
   const sharedClasses = [
     "w-full px-4 py-3 rounded-xl",
@@ -83,9 +83,9 @@ function FormField({
     "outline-none",
     "transition-all duration-200",
     // Border color states
-    hasError  ? "border-red-500/60 focus:border-red-500"
-    : isValid ? "border-emerald-500/40 focus:border-emerald-500/60"
-    :           "border-(--border-subtle) focus:border-(--accent-primary)/60",
+    hasError ? "border-red-500/60 focus:border-red-500"
+      : isValid ? "border-emerald-500/40 focus:border-emerald-500/60"
+        : "border-(--border-subtle) focus:border-(--accent-primary)/60",
     // Glow on focus
     "focus:shadow-[0_0_0_3px_rgba(232,255,71,0.08)]",
     hasError ? "focus:shadow-[0_0_0_3px_rgba(239,68,68,0.08)]" : "",
@@ -274,16 +274,16 @@ function SuccessMessage({ onReset }) {
 // ─── Contact Form ─────────────────────────────────────────────
 function ContactForm() {
   const INITIAL_FIELDS = {
-    name:    "",
-    email:   "",
+    name: "",
+    email: "",
     subject: "",
     message: "",
   };
 
-  const [fields,  setFields]  = useState(INITIAL_FIELDS);
-  const [errors,  setErrors]  = useState({});
+  const [fields, setFields] = useState(INITIAL_FIELDS);
+  const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
-  const [status,  setStatus]  = useState("idle"); // idle | loading | success | error
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
 
   // ── Field handlers ─────────────────────────────────────────
   const handleChange = (e) => {
@@ -332,9 +332,9 @@ function ContactForm() {
       }
 
       const res = await fetch(FORMSPREE_URL, {
-        method:  "POST",
+        method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body:    JSON.stringify(fields),
+        body: JSON.stringify(fields),
       });
 
       if (res.ok) {
@@ -560,10 +560,10 @@ export default function Contact() {
 
               <ul className="space-y-2.5">
                 {[
-                  { icon: "⚡", text: "Response within 24–48 hours"              },
-                  { icon: "💬", text: "Happy to jump on a quick call"             },
-                  { icon: "🌍", text: "Open to remote roles worldwide"            },
-                  { icon: "🤝", text: "Available for freelance & full-time work"  },
+                  { icon: "⚡", text: "Response within 24–48 hours" },
+                  { icon: "💬", text: "Happy to jump on a quick call" },
+                  { icon: "🌍", text: "Open to remote roles worldwide" },
+                  { icon: "🤝", text: "Available for freelance & full-time work" },
                 ].map((item) => (
                   <li
                     key={item.text}
