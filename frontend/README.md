@@ -1,16 +1,145 @@
-# React + Vite
+# 🚀 Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive, and highly customizable portfolio website built with **React**, **Vite**, and **Tailwind CSS** to showcase projects, technical skills, and professional experience.
 
-Currently, two official plugins are available:
+![Portfolio Preview](./public/preview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Demo
 
-## React Compiler
+🔗 **Portfolio:** https://your-portfolio-link.com
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* 🎨 Modern and responsive design
+* ⌨️ Custom typewriter animation
+* 📱 Mobile-first user experience
+* 🧩 Reusable UI component architecture
+* 🚀 Fast performance powered by Vite
+* 🎯 Smooth scroll navigation
+* 💼 Dedicated sections for projects, skills, and contact information
+* 📄 Resume download functionality
+* 🔧 Easily customizable through a single data file
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React.js
+* Vite
+* Tailwind CSS
+* JavaScript (ES6+)
+
+### Development Tools
+
+* Git & GitHub
+* VS Code
+* ESLint
+
+### Deployment
+
+* Vercel 
+
+---
+
+## 📁 Project Structure
+
+```text
+portfolio/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── layout/
+│   │   ├── ui/
+│   │   └── sections/
+│   ├── constants/
+│   │   └── data.js
+│   ├── hooks/
+│   │   ├── useTypewriter.js
+│   │   └── useScrollReveal.js
+│   ├── utils/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── tailwind.config.js
+├── vite.config.js
+└── package.json
+```
+
+---
+
+## ⚙️ Getting Started
+
+### Clone the repository
+
+```bash
+git clone https://github.com/srinivas5s/Portfolio.git
+```
+
+### Navigate to the project directory
+
+```bash
+cd frontend
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start the development server
+
+```bash
+npm run dev
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+---
+
+## 🎨 Customization
+
+All portfolio content is managed from a single configuration file:
+
+```text
+src/constants/data.js
+```
+
+Update your:
+
+* Personal information
+* Skills
+* Projects
+* Social links
+* Resume URL
+* Contact details
+
+without modifying the UI components.
+
+---
+
+## 📬 Contact
+
+Feel free to connect with me:
+
+* LinkedIn: https://www.linkedin.com/in/p-srinivas-senapati
+* GitHub: https://github.com/srinivas5s
+* Email: work.srinivas.dev@gmail.com
+
+---
+
+## ⭐ Support
+
+If you found this project useful or inspiring, consider giving it a **star** on GitHub.
+
+It helps others discover the project and motivates continued improvements.

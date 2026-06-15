@@ -1,12 +1,3 @@
-/* ============================================================
-   src/components/sections/About.jsx
-   About section with:
-   - Two-column layout (story left, cards right)
-   - Capability cards with hover states
-   - Stats row
-   - Education / Experience timeline
-   ============================================================ */
-
 import { useRef } from "react";
 import {
     PERSONAL_INFO, ABOUT_CARDS, STATS,
@@ -28,7 +19,6 @@ function CapabilityCard({ icon, title, desc, index }) {
                 "hover:border-t-(--accent-primary)",
             ].join(" ")}
             style={{
-                // Stagger entrance via inline style (hook handles the animation)
                 transitionDelay: `${index * 60}ms`,
             }}
         >

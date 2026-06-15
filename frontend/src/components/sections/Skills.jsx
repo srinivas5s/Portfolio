@@ -1,12 +1,3 @@
-/* ============================================================
-   src/components/sections/Skills.jsx
-   Skills section with:
-   - Color-coded category cards
-   - Animated progress bars (fill on scroll into view)
-   - Proficiency legend
-   - Staggered card entrance
-   ============================================================ */
-
 import { useRef, useState, useEffect } from "react";
 import { SKILLS } from "../../constants/data";
 import {
@@ -67,10 +58,6 @@ function Legend() {
 }
 
 // ─── Skill Bar ────────────────────────────────────────────────
-/**
- * Individual skill row with animated progress bar.
- * Bar fills from 0 → level when `animate` prop becomes true.
- */
 function SkillBar({ name, level, categoryColor, animate, index }) {
   const proficiency = getProficiencyLabel(level);
 

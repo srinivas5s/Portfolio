@@ -1,8 +1,3 @@
-/* ============================================================
-   src/components/layout/Navbar.jsx
-   — Added ThemeToggle button
-   ============================================================ */
-
 import { useState, useEffect, useRef } from "react";
 import { NAV_LINKS, PERSONAL_INFO } from "../../constants/data";
 import {
@@ -12,8 +7,7 @@ import {
 import { useTheme } from "../../context/ThemeContext";
 import Button from "../ui/Button";
 
-// ─── Theme Toggle ─────────────────────────────────────────────
-// ─── Theme Toggle ─────────────────────────────────────────────
+
 function ThemeToggle() {
   const { isDark, toggleTheme } = useTheme();
 

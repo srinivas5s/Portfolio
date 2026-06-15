@@ -1,29 +1,5 @@
-/* ============================================================
-   src/components/ui/SectionHeader.jsx
-   Reusable section header used at the top of every section.
-
-   Usage:
-     <SectionHeader
-       label="About Me"
-       title="Crafting digital experiences."
-       subtitle="A short supporting line goes here."
-       align="left"        // "left" | "center"
-       titleAccent="experiences" // word(s) to color in accent
-     />
-   ============================================================ */
-
 import Badge from "./Badge";
 
-// ─── Accent Word Highlighter ─────────────────────────────────
-/**
- * Splits the title string and wraps the accent word(s) in a
- * styled span so part of the heading appears in lime accent color.
- *
- * Example:
- *   title="Crafting digital experiences."
- *   titleAccent="digital"
- *   → "Crafting " + <span>digital</span> + " experiences."
- */
 function HighlightedTitle({ title, accent }) {
   // No accent word — render plain title
   if (!accent) {
@@ -139,7 +115,7 @@ function SectionHeader({
         className={[
           "reveal reveal-delay-1",
           "font-display font-bold",
-          "text-[var(--text-primary)]",
+          "text-(--text-primary)",
           // Fluid type scale — big on desktop, readable on mobile
           "text-4xl sm:text-5xl lg:text-[3.5rem]",
           "leading-[1.05] tracking-tight",
@@ -181,7 +157,7 @@ function SectionHeader({
           aria-hidden="true"
         >
           <div
-            className="w-[2px] h-full min-h-[80px] rounded-full opacity-20"
+            className="w-0.5 h-full min-h-20 rounded-full opacity-20"
             style={{
               background: labelColor
                 ? `linear-gradient(180deg, ${labelColor}, transparent)`

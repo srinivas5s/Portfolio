@@ -1,14 +1,3 @@
-/* ============================================================
-   src/components/sections/Projects.jsx
-   Projects section with:
-   - Featured projects as large hero cards
-   - Remaining projects in a 2-col grid
-   - Status badges (Live / In Progress / Archived)
-   - Tech stack tags
-   - Highlight bullet points
-   - GitHub + Live demo links
-   ============================================================ */
-
 import { useRef, useState } from "react";
 import { PROJECTS } from "../../constants/data";
 import { useStaggerReveal } from "../../hooks/useScrollReveal";

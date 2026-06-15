@@ -1,15 +1,3 @@
-/* ============================================================
-   src/components/sections/Hero.jsx
-   Full-viewport hero section with:
-   - Animated headline entrance
-   - Typewriter role cycling
-   - Availability badge
-   - Dual CTA buttons
-   - Social links
-   - Decorative grid + glow background
-   - Scroll indicator
-   ============================================================ */
-
 import { useRef } from "react";
 import { PERSONAL_INFO, TYPEWRITER_ROLES } from "../../constants/data";
 import { useTypewriter } from "../../hooks/useTypewriter";

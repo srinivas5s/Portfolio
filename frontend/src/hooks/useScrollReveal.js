@@ -1,18 +1,3 @@
-/* ============================================================
-   src/hooks/useScrollReveal.js
-   Custom hook for scroll-triggered reveal animations.
-
-   TWO ways to use this hook:
-
-   1. Global mode — call once in App.jsx, auto-targets all
-      elements with className "reveal":
-        useScrollReveal();
-
-   2. Ref mode — attach to a specific element ref:
-        const ref = useRef(null);
-        const isVisible = useScrollReveal(ref, { threshold: 0.2 });
-   ============================================================ */
-
 import { useState, useEffect, useRef, useCallback } from "react";
 
 // ─── Default Observer Options ────────────────────────────────

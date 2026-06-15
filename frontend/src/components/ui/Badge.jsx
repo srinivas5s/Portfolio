@@ -1,15 +1,3 @@
-/* ============================================================
-   src/components/ui/Badge.jsx
-   Reusable Badge / Tag / Pill component.
-
-   Usage examples:
-     <Badge variant="available">Available for Work</Badge>
-     <Badge variant="status" status="Live">Live</Badge>
-     <Badge variant="tech">React</Badge>
-     <Badge variant="mono" color="#7B61FF">Backend</Badge>
-     <Badge dot>Open to Remote</Badge>
-   ============================================================ */
-
 // ─── Variant Definitions ─────────────────────────────────────
 const VARIANTS = {
   // "Available for Work" — hero section indicator
@@ -90,8 +78,8 @@ function Dot({ className = "" }) {
   return (
     <span
       className={[
-        "flex-shrink-0",
-        "w-[6px] h-[6px] rounded-full",
+        "shrink-0",
+        "w-1.5 h-1.5 rounded-full",
         className,
       ].join(" ")}
       aria-hidden="true"
@@ -104,7 +92,7 @@ function Dot({ className = "" }) {
 function AccentDash({ color }) {
   return (
     <span
-      className="inline-block w-5 h-[1.5px] rounded-full flex-shrink-0"
+      className="inline-block w-5 h-[1.5px] rounded-full shrink-0"
       style={{ background: color || "var(--accent-primary)" }}
       aria-hidden="true"
     />
@@ -214,7 +202,7 @@ function Badge({
         {...rest}
       >
         {icon && <span aria-hidden="true">{icon}</span>}
-        {dot && <Dot className="bg-[var(--text-tertiary)]" />}
+        {dot && <Dot className="bg-(--text-tertiary)" />}
         {children}
       </span>
     );
@@ -231,24 +219,13 @@ function Badge({
           {icon}
         </span>
       )}
-      {dot && <Dot className="bg-[var(--text-secondary)]" />}
+      {dot && <Dot className="bg-(--text-secondary)" />}
       {children}
     </span>
   );
 }
 
-// ─── BadgeGroup ──────────────────────────────────────────────
-/**
- * BadgeGroup
- * Wraps multiple Badge components in a consistent flex row.
- * Handles overflow wrapping automatically.
- *
- * Usage:
- *   <BadgeGroup>
- *     <Badge variant="tech">React</Badge>
- *     <Badge variant="tech">Node.js</Badge>
- *   </BadgeGroup>
- */
+
 export function BadgeGroup({ children, className = "", gap = "gap-2", ...rest }) {
   return (
     <div

@@ -1,14 +1,8 @@
-/* ============================================================
-   src/constants/data.js
-   Central data store — all portfolio content lives here.
-   Update this file to personalize the portfolio.
-   ============================================================ */
-
 // ─── Personal Info ───────────────────────────────────────────
 export const PERSONAL_INFO = {
   name: "Srinivas",
   lastName: "Senapati",       // update with your last name
-  role: "Full Stack Developer",
+  role: "Full Stack Developer | AI/ML Engineer",
   tagline: "Building scalable web apps today, learning AI for tomorrow.",
   bio: [
     "I'm a full stack developer specializing in the MERN stack — passionate about building products that are both technically excellent and genuinely useful to people.",
@@ -33,9 +27,8 @@ export const PERSONAL_INFO = {
 export const TYPEWRITER_ROLES = [
   "Full Stack Developer",
   "MERN Stack Engineer",
-  "Aspiring AI Learning Engineer",
+  "AI/ML Engineer",
   "Problem Solver",
-  "Quick Learner",
 ];
 
 // ─── Stats — shown in About section ─────────────────────────
@@ -159,7 +152,7 @@ export const PROJECTS = [
       "Course content summarization with AI",
     ],
     github: "https://github.com/srinivas5s/LMS",
-    live: "https://srinivas-senapati-portfolio.vercel.app",
+    live: "https://srinivas-senapati.vercel.app",
     status: "In Progress",
   },
   // {
@@ -218,14 +211,14 @@ export const GITHUB_USERNAME = "srinivas5s"; // used to build profile links
 // ─── Experience / Timeline ───────────────────────────────────
 // Optional section — remove if you're a fresher with no experience
 export const EXPERIENCE = [
-  // {
-  //   role:     "Full Stack Developer Intern",
-  //   company:  "TechStartup Pvt. Ltd.",
-  //   period:   "Jan 2024 – Apr 2024",
-  //   location: "Remote",
-  //   desc:     "Built RESTful APIs with Node.js/Express, developed React dashboards, and integrated third-party payment APIs. Improved API response time by 30% through query optimization.",
-  //   stack:    ["React", "Node.js", "MongoDB", "Express"],
-  // },
+  {
+    role:     "Full Stack Developer Intern",
+    company:  "BNSpire Pvt. Ltd.",
+    period:   "May 2026",
+    location: "Remote",
+    desc:     "Built RESTful APIs with Node.js/Express, developed React dashboards, and integrated third-party payment APIs. Improved API response time by 30% through query optimization.",
+    stack:    ["React", "Node.js", "MongoDB", "Express"],
+  },
   // Add more experience objects as needed
 ];
 
@@ -280,7 +273,7 @@ export const NAV_LINKS = [
 
 // ─── Meta / SEO ───────────────────────────────────────────────
 export const META = {
-  title: "Srinivas Senapati — MERN Stack Developer",
+  title: "Srinivas Senapati — MERN Stack Developer | AI/ML Engineer",
   description:
     "Fresher MERN Stack Developer skilled in building full-stack web applications and exploring AI integration. Open to opportunities.",
   keywords: "full stack developer, MERN stack, React developer, Node.js, AI, portfolio",

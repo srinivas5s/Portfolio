@@ -1,18 +1,3 @@
-/* ============================================================
-   src/components/ui/Button.jsx
-   Reusable Button component — covers all variants used
-   across the portfolio.
-
-   Usage examples:
-     <Button variant="primary" href="#projects">View Projects</Button>
-     <Button variant="outline" onClick={fn}>Download CV</Button>
-     <Button variant="ghost" size="sm">Learn More</Button>
-     <Button variant="primary" loading>Sending...</Button>
-     <Button variant="icon" aria-label="GitHub">
-       <GitHubIcon />
-     </Button>
-   ============================================================ */
-
 import { forwardRef } from "react";
 
 // ─── Variant Styles ──────────────────────────────────────────

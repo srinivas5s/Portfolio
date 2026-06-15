@@ -1,18 +1,3 @@
-/* ============================================================
-   src/components/sections/GitHub.jsx
-
-   All data fetched live from the GitHub public API:
-   - Profile stats (repos, followers, following)
-   - Top languages aggregated from all public repos
-   - Real contribution heatmap built from public events
-     (GitHub Events API gives ~90 days of push events — we map
-      those exact dates onto the 52-week grid; weeks outside the
-      90-day window show 0 gracefully)
-   - Streak calculated from consecutive days with push events
-
-   No dummy / seeded data remains.
-   ============================================================ */
-
 import { useState, useEffect, useRef, useCallback } from "react";
 import { GITHUB_USERNAME } from "../../constants/data";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
@@ -27,12 +12,10 @@ const GH_HEADERS = { Accept: "application/vnd.github.v3+json" };
 
 // ─── Utilities ───────────────────────────────────────────────
 
-/** Format a date to "YYYY-MM-DD" in local time */
 function toDateStr(date) {
   return date.toISOString().slice(0, 10);
 }
 
-/** Return the Monday-aligned start of the week containing `date` */
 function weekStart(date) {
   const d = new Date(date);
   const day = d.getDay(); // 0 = Sun
@@ -41,14 +24,6 @@ function weekStart(date) {
   return d;
 }
 
-// ─── Build 52-week contribution grid from push events ─────────
-/**
- * GitHub's public events API returns up to 300 events (~90 days).
- * We extract PushEvent dates, count commits per day, and map onto
- * a 52-week (364-day) grid aligned to today.
- *
- * Returns: Array[52] of Array[7] of { level: 0–4, count: number }
- */
 function buildHeatmap(events) {
   // Count commits per calendar day
   const commitsByDay = {}; // "YYYY-MM-DD" -> count

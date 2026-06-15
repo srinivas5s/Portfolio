@@ -1,10 +1,3 @@
-/* ============================================================
-   src/App.jsx
-   Root application component.
-   Assembles layout + all sections in order.
-   Initializes global hooks (scroll reveal, scroll progress).
-   ============================================================ */
-
 import { useEffect } from "react";
 import { useGlobalScrollReveal } from "./hooks/useScrollReveal";
 import { META } from "./constants/data";
@@ -25,7 +18,6 @@ import Contact from "./components/sections/Contact";
 export default function App() {
 
   // ── Initialize global scroll reveal ───────────────────────
-  // Observes every .reveal element across all sections
   useGlobalScrollReveal({ threshold: 0.12, triggerOnce: true });
 
   // ── Update document meta on mount ─────────────────────────

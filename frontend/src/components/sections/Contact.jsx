@@ -15,12 +15,6 @@ import SectionHeader from "../ui/SectionHeader";
 import Button from "../ui/Button";
 import Badge from "../ui/Badge";
 
-/* ── SETUP INSTRUCTIONS ──────────────────────────────────────
-   1. Go to https://formspree.io and create a free account
-   2. Create a new form — copy your form ID (looks like "xpzvwkgb")
-   3. Replace "YOUR_FORM_ID" below with your actual ID
-   4. Formspree will email you every submission for free
-   ─────────────────────────────────────────────────────────── */
 const FORMSPREE_ID = "xlgakevy";
 const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
 

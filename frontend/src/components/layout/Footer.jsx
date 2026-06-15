@@ -1,17 +1,6 @@
-/* ============================================================
-   src/components/layout/Footer.jsx
-   Portfolio footer with:
-   - Brand reinforcement
-   - Quick nav links
-   - Social links
-   - Final CTA
-   - "Built with" tech stack credits
-   ============================================================ */
-
 import { PERSONAL_INFO, NAV_LINKS, CONTACT_INFO } from "../../constants/data";
 import Button from "../ui/Button";
 
-// ─── Social Icons (inline SVG — no icon library needed) ──────
 const SOCIAL_ICONS = {
   github: (
     <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
@@ -35,7 +24,6 @@ const SOCIAL_ICONS = {
   ),
 };
 
-// ─── Social Link ──────────────────────────────────────────────
 function SocialLink({ href, icon, label }) {
   return (
     <a
@@ -47,11 +35,11 @@ function SocialLink({ href, icon, label }) {
         "w-9 h-9 rounded-lg",
         "flex items-center justify-center",
         "border border-(--border-subtle)",
-        "text-[var(--text-secondary)]",
-        "hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)]",
+        "text-(--text-secondary)",
+        "hover:border-(--accent-primary) hover:text-(--accent-primary)",
         "hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(232,255,71,0.15)]",
         "transition-all duration-200",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary)",
       ].join(" ")}
     >
       {icon}
@@ -72,8 +60,8 @@ function FooterNavLink({ href, label }) {
         href={`#${href}`}
         onClick={handleClick}
         className={[
-          "text-sm text-[var(--text-secondary)]",
-          "hover:text-[var(--accent-primary)]",
+          "text-sm text-(--text-secondary)",
+          "hover:text-(--accent-primary)",
           "transition-colors duration-150",
           "font-medium",
         ].join(" ")}
@@ -84,21 +72,20 @@ function FooterNavLink({ href, label }) {
   );
 }
 
-// ─── Built With Stack ─────────────────────────────────────────
-// Small tasteful credit line showing your tech choices
+
 function BuiltWith() {
   const stack = ["React", "Tailwind CSS", "Vite"];
 
   return (
-    <p className="font-mono text-xs text-[var(--text-tertiary)] tracking-wide">
+    <p className="font-mono text-xs text-(--text-tertiary) tracking-wide">
       Built with{" "}
       {stack.map((tech, i) => (
         <span key={tech}>
-          <span className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-150 cursor-default">
+          <span className="text-(--text-secondary) hover:text-(--accent-primary) transition-colors duration-150 cursor-default">
             {tech}
           </span>
           {i < stack.length - 1 && (
-            <span className="mx-1 text-[var(--text-tertiary)]">·</span>
+            <span className="mx-1 text-(--text-tertiary)">·</span>
           )}
         </span>
       ))}
@@ -136,14 +123,14 @@ export default function Footer() {
       icon: SOCIAL_ICONS.email,
       label: "Send email",
     },
-  ].filter((s) => s.href); // hide links with no URL set
+  ].filter((s) => s.href); 
 
   return (
     <footer
       className={[
         "relative",
-        "bg-[var(--bg-secondary)]",
-        "border-t border-[var(--border-subtle)]",
+        "bg-(--bg-secondary)",
+        "border-t border-(--border-subtle)",
         "overflow-hidden",
       ].join(" ")}
       role="contentinfo"
@@ -151,7 +138,7 @@ export default function Footer() {
 
       {/* ── Decorative background glow ── */}
       <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] pointer-events-none"
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-150 h-50 pointer-events-none"
         aria-hidden="true"
         style={{
           background: "radial-gradient(ellipse at center bottom, rgba(232,255,71,0.04) 0%, transparent 70%)",
@@ -159,31 +146,31 @@ export default function Footer() {
       />
 
       {/* ── Top CTA band ── */}
-      <div className="border-b border-[var(--border-subtle)]">
+      <div className="border-b border-(--border-subtle)">
         <div className="container-main py-14">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
 
             {/* Left — final CTA copy */}
             <div className="max-w-md">
-              <p className="font-mono text-xs tracking-widest text-[var(--accent-primary)] uppercase mb-3">
+              <p className="font-mono text-xs tracking-widest text-(--accent-primary) uppercase mb-3">
                 Open to opportunities
               </p>
               <h2 className={[
                 "font-display font-bold",
                 "text-3xl sm:text-4xl tracking-tight leading-tight",
-                "text-[var(--text-primary)]",
+                "text-(--text-primary)",
                 "mb-2",
               ].join(" ")}>
                 Let's build something
-                <span className="text-[var(--accent-primary)] italic"> great.</span>
+                <span className="text-(--accent-primary) italic"> great.</span>
               </h2>
-              <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
+              <p className="text-(--text-secondary) text-sm leading-relaxed">
                 Available for full-time roles, freelance projects, and interesting collaborations.
               </p>
             </div>
 
             {/* Right — action buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
               <Button
                 variant="primary"
                 size="md"
@@ -214,14 +201,14 @@ export default function Footer() {
           <div className="space-y-4">
             {/* Logo */}
             <div className="flex items-center gap-1">
-              <span className="font-mono text-[var(--accent-primary)] text-xl">&lt;</span>
-              <span className="font-display font-bold text-lg text-[var(--text-primary)] tracking-tight">
+              <span className="font-mono text-(--accent-primary) text-xl">&lt;</span>
+              <span className="font-display font-bold text-lg text-(--text-primary) tracking-tight">
                 {PERSONAL_INFO.name}
               </span>
-              <span className="font-mono text-[var(--accent-primary)] text-xl">/&gt;</span>
+              <span className="font-mono text-(--accent-primary) text-xl">/&gt;</span>
             </div>
 
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-[220px]">
+            <p className="text-sm text-(--text-secondary) leading-relaxed max-w-55">
               {PERSONAL_INFO.tagline}
             </p>
 
@@ -235,7 +222,7 @@ export default function Footer() {
 
           {/* Column 2 — Quick Nav */}
           <div>
-            <p className="font-mono text-xs tracking-widest text-[var(--text-tertiary)] uppercase mb-5">
+            <p className="font-mono text-xs tracking-widest text-(--text-tertiary) uppercase mb-5">
               Navigation
             </p>
             <ul className="space-y-3">
@@ -251,7 +238,7 @@ export default function Footer() {
 
           {/* Column 3 — Contact details */}
           <div>
-            <p className="font-mono text-xs tracking-widest text-[var(--text-tertiary)] uppercase mb-5">
+            <p className="font-mono text-xs tracking-widest text-(--text-tertiary) uppercase mb-5">
               Contact
             </p>
             <ul className="space-y-3">
@@ -263,12 +250,12 @@ export default function Footer() {
                     rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     className={[
                       "flex items-center gap-2.5 group",
-                      "text-sm text-[var(--text-secondary)]",
-                      "hover:text-[var(--accent-primary)]",
+                      "text-sm text-(--text-secondary)",
+                      "hover:text-(--accent-primary)",
                       "transition-colors duration-150",
                     ].join(" ")}
                   >
-                    <span className="text-base flex-shrink-0" aria-hidden="true">
+                    <span className="text-base shrink-0" aria-hidden="true">
                       {item.icon}
                     </span>
                     <span className="truncate">{item.value}</span>
@@ -288,16 +275,16 @@ export default function Footer() {
       </div>
 
       {/* ── Bottom bar ── */}
-      <div className="border-t border-[var(--border-subtle)]">
+      <div className="border-t border-(--border-subtle)">
         <div className={[
           "container-main py-5",
           "flex flex-col sm:flex-row items-center justify-between gap-3",
         ].join(" ")}>
 
           {/* Copyright */}
-          <p className="text-xs text-[var(--text-tertiary)] font-mono tracking-wide order-2 sm:order-1">
+          <p className="text-xs text-(--text-tertiary) font-mono tracking-wide order-2 sm:order-1">
             © {currentYear}{" "}
-            <span className="text-[var(--text-secondary)]">
+            <span className="text-(--text-secondary)">
               {PERSONAL_INFO.name} {PERSONAL_INFO.lastName}
             </span>
             . All rights reserved.
@@ -317,10 +304,10 @@ export default function Footer() {
               "order-3",
               "flex items-center gap-2",
               "font-mono text-xs tracking-wide",
-              "text-[var(--text-tertiary)]",
-              "hover:text-[var(--accent-primary)]",
+              "text-(--text-tertiary)",
+              "hover:text-(--accent-primary)",
               "transition-colors duration-150",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] rounded",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-primary) rounded",
               "group",
             ].join(" ")}
             aria-label="Back to top"
