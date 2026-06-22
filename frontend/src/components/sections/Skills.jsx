@@ -1,295 +1,101 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import { SKILLS } from "../../constants/data";
-import {
-  useScrollReveal,
-  useStaggerReveal
-} from "../../hooks/useScrollReveal";
 import SectionHeader from "../ui/SectionHeader";
-import Badge from "../ui/Badge";
 
-// ─── Proficiency Legend ───────────────────────────────────────
-const PROFICIENCY_LEVELS = [
-  { label: "Familiar", min: 0, max: 65, color: "#4A4A5A" },
-  { label: "Proficient", min: 65, max: 80, color: "#7B61FF" },
-  { label: "Advanced", min: 80, max: 90, color: "#00D4AA" },
-  { label: "Expert", min: 90, max: 100, color: "#E8FF47" },
-];
-
-function getProficiencyLabel(level) {
-  return (
-    PROFICIENCY_LEVELS.find((p) => level >= p.min && level <= p.max)
-    ?? PROFICIENCY_LEVELS[0]
-  );
+// ─── Proficiency label from level ────────────────────────────
+function getLevelLabel(level) {
+  if (level >= 90) return "Expert";
+  if (level >= 80) return "Advanced";
+  if (level >= 65) return "Proficient";
+  return "Familiar";
 }
 
-function Legend() {
+// ─── Individual skill card ────────────────────────────────────
+function SkillCard({ name, level, color, bg, icon, index }) {
+  const label = getLevelLabel(level);
+
   return (
     <div
       className={[
-        "flex flex-wrap items-center gap-x-6 gap-y-2",
-        "mb-12 reveal",
+        "card rounded-2xl p-5",
+        "flex flex-col items-center gap-3",
+        "hover:-translate-y-1 transition-transform duration-150",
       ].join(" ")}
-      aria-label="Skill proficiency legend"
-      role="list"
+      style={{
+        borderTop: `2px solid ${color}30`,
+        animationDelay: `${index * 35}ms`,
+      }}
     >
-      <span className="font-mono text-[10px] tracking-widest text-(--text-tertiary) uppercase mr-2">
-        Proficiency:
+      {/* Icon badge */}
+      <div
+        className="w-11 h-11 rounded-xl flex items-center justify-center text-xs font-mono font-bold"
+        style={{ background: bg, color }}
+        aria-hidden="true"
+      >
+        {icon}
+      </div>
+
+      {/* Skill name */}
+      <span className="text-sm font-medium text-(--text-secondary) text-center leading-tight">
+        {name}
       </span>
 
-      {PROFICIENCY_LEVELS.map((level) => (
-        <div
-          key={level.label}
-          className="flex items-center gap-2"
-          role="listitem"
-        >
-          {/* Color swatch */}
-          <span
-            className="w-2 h-2 rounded-full shrink-0"
-            style={{ background: level.color }}
-            aria-hidden="true"
-          />
-          <span className="font-mono text-xs text-(--text-secondary)">
-            {level.label}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// ─── Skill Bar ────────────────────────────────────────────────
-function SkillBar({ name, level, categoryColor, animate, index }) {
-  const proficiency = getProficiencyLabel(level);
-
-  return (
-    <div
-      className="group"
-      style={{ transitionDelay: `${index * 40}ms` }}
-    >
-      {/* Label row */}
-      <div className="flex items-center justify-between mb-1.5">
-        {/* Skill name */}
-        <span
-          className={[
-            "text-sm font-medium",
-            "text-(--text-secondary)",
-            "group-hover:text-(--text-primary)",
-            "transition-colors duration-150",
-          ].join(" ")}
-        >
-          {name}
-        </span>
-
-        {/* Percentage + proficiency label */}
-        <div className="flex items-center gap-2">
-          <span
-            className="font-mono text-[10px]"
-            style={{ color: proficiency.color }}
-          >
-            {proficiency.label}
-          </span>
-          <span className="font-mono text-xs text-(--text-tertiary)">
-            {level}%
-          </span>
-        </div>
-      </div>
-
-      {/* Track */}
+      {/* Level bar */}
       <div
-        className={[
-          "relative h-1.25 rounded-full overflow-hidden",
-          "bg-(--bg-hover)",
-        ].join(" ")}
+        className="w-12 h-0.75 rounded-full bg-(--bg-hover) overflow-hidden"
         role="progressbar"
-        aria-valuenow={animate ? level : 0}
+        aria-valuenow={level}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label={`${name} proficiency: ${level}%`}
+        aria-label={`${name}: ${level}%`}
       >
-        {/* Fill bar */}
         <div
-          className="absolute inset-y-0 left-0 rounded-full"
-          style={{
-            // Animate width from 0 to level on trigger
-            width: animate ? `${level}%` : "0%",
-            background: `linear-gradient(90deg, ${categoryColor}99, ${categoryColor})`,
-            transition: animate
-              ? `width 0.9s cubic-bezier(0.4, 0, 0.2, 1) ${index * 60}ms`
-              : "none",
-            boxShadow: animate ? `0 0 8px ${categoryColor}60` : "none",
-          }}
+          className="h-full rounded-full"
+          style={{ width: `${level}%`, background: color }}
         />
-
-        {/* Glint — subtle shine on fill bar */}
-        <div
-          className="absolute inset-y-0 left-0 rounded-full overflow-hidden pointer-events-none"
-          style={{ width: animate ? `${level}%` : "0%" }}
-          aria-hidden="true"
-        >
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(255,255,255,0.25) 0%, transparent 100%)",
-            }}
-          />
-        </div>
       </div>
+
+      {/* Proficiency label */}
+      <span className="font-mono text-[10px] text-(--text-tertiary)">
+        {label}
+      </span>
     </div>
   );
 }
 
-// ─── Category Card ────────────────────────────────────────────
-function CategoryCard({ category, color, icon, items }) {
-  // Ref for this card — triggers bar animation when card enters view
-  const cardRef = useRef(null);
-  const isVisible = useScrollReveal(cardRef, { threshold: 0.2 });
-
+// ─── Category filter tabs ─────────────────────────────────────
+function CategoryTabs({ skills, active, onChange }) {
   return (
     <div
-      ref={cardRef}
-      className={[
-        "card rounded-2xl p-6",
-        "flex flex-col gap-6",
-        // Left accent border using category color
-        "border-l-2",
-      ].join(" ")}
-      style={{ borderLeftColor: color }}
-      aria-label={`${category} skills`}
+      className="flex flex-wrap gap-2.5 mb-10"
+      role="tablist"
+      aria-label="Skill categories"
     >
-      {/* Card header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          {/* Icon badge */}
-          <div
-            className="w-9 h-9 rounded-lg flex items-center justify-center text-sm font-mono font-bold"
-            style={{
-              background: `${color}15`,
-              color,
-              border: `1px solid ${color}30`,
-            }}
-            aria-hidden="true"
-          >
-            {icon}
-          </div>
-
-          {/* Category name */}
-          <Badge variant="mono" color={color} dash>
-            {category}
-          </Badge>
-        </div>
-
-        {/* Item count */}
-        <span
-          className="font-mono text-xs text-(--text-tertiary)"
-          aria-label={`${items.length} skills`}
+      {skills.map((group, i) => (
+        <button
+          key={group.category}
+          role="tab"
+          aria-selected={active === i}
+          onClick={() => onChange(i)}
+          className={[
+            "px-5 py-2 rounded-full text-sm font-medium",
+            "border transition-all duration-150",
+            active === i
+              ? "bg-(--text-primary) text-(--bg-primary) border-(--text-primary)"
+              : "bg-transparent text-(--text-secondary) border-(--border-subtle) hover:bg-(--bg-hover) hover:text-(--text-primary)",
+          ].join(" ")}
         >
-          {items.length} skills
-        </span>
-      </div>
-
-      {/* Skill bars */}
-      <div
-        className="space-y-4"
-        role="list"
-        aria-label={`${category} skill levels`}
-      >
-        {items.map((skill, i) => (
-          <div key={skill.name} role="listitem">
-            <SkillBar
-              name={skill.name}
-              level={skill.level}
-              categoryColor={color}
-              animate={isVisible}
-              index={i}
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Card footer — avg proficiency */}
-      <div
-        className={[
-          "pt-4 mt-auto",
-          "border-t border-(--border-subtle)",
-          "flex items-center justify-between",
-        ].join(" ")}
-      >
-        <span className="font-mono text-[10px] tracking-widest text-(--text-tertiary) uppercase">
-          Avg. Proficiency
-        </span>
-
-        {/* Average level bar */}
-        <div className="flex items-center gap-2">
-          {/* Mini bar */}
-          <div className="w-16 h-1 rounded-full bg-(--bg-hover) overflow-hidden">
-            <div
-              className="h-full rounded-full transition-all duration-1000"
-              style={{
-                width: isVisible
-                  ? `${Math.round(items.reduce((s, i) => s + i.level, 0) / items.length)}%`
-                  : "0%",
-                background: color,
-              }}
-            />
-          </div>
-
-          <span
-            className="font-mono text-xs font-semibold"
-            style={{ color }}
-          >
-            {Math.round(
-              items.reduce((sum, item) => sum + item.level, 0) / items.length
-            )}%
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ─── Tools Strip ─────────────────────────────────────────────
-// Flat list of additional tools below the main grid
-const EXTRA_TOOLS = [
-  "VS Code", "Figma", "Postman", "GitHub Actions",
-  "Vercel", "Netlify", "npm", "ESLint", "Prettier",
-];
-
-function ToolsStrip() {
-  const ref = useRef(null);
-  useStaggerReveal(ref, { staggerMs: 50, threshold: 0.3 });
-
-  return (
-    <div className="mt-16 reveal">
-      {/* Label */}
-      <p className="font-mono text-[10px] tracking-widest text-(--text-tertiary) uppercase mb-5">
-        Also comfortable with
-      </p>
-
-      {/* Tools list */}
-      <div
-        ref={ref}
-        className="flex flex-wrap gap-2"
-        role="list"
-        aria-label="Additional tools"
-      >
-        {EXTRA_TOOLS.map((tool) => (
-          <div key={tool} role="listitem">
-            <Badge variant="outline">
-              {tool}
-            </Badge>
-          </div>
-        ))}
-      </div>
+          {group.category}
+        </button>
+      ))}
     </div>
   );
 }
 
 // ─── Main Skills Section ──────────────────────────────────────
 export default function Skills() {
-  // Stagger the category cards on scroll
-  const gridRef = useRef(null);
-  useStaggerReveal(gridRef, { staggerMs: 80, threshold: 0.05 });
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeGroup = SKILLS[activeIndex];
 
   return (
     <section
@@ -309,33 +115,33 @@ export default function Skills() {
           id="skills-heading"
         />
 
-        {/* Proficiency legend */}
-        <Legend />
+        {/* Category tabs */}
+        <CategoryTabs
+          skills={SKILLS}
+          active={activeIndex}
+          onChange={setActiveIndex}
+        />
 
-        {/* Category cards grid */}
+        {/* Skills grid */}
         <div
-          ref={gridRef}
-          className={[
-            "grid gap-5",
-            "grid-cols-1 sm:grid-cols-2 xl:grid-cols-4",
-          ].join(" ")}
-          role="list"
-          aria-label="Skill categories"
+          key={activeGroup.category}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-3"
+          role="tabpanel"
+          aria-label={`${activeGroup.category} skills`}
         >
-          {SKILLS.map((skillGroup) => (
-            <div key={skillGroup.category} role="listitem">
-              <CategoryCard
-                category={skillGroup.category}
-                color={skillGroup.color}
-                icon={skillGroup.icon}
-                items={skillGroup.items}
-              />
-            </div>
+          {activeGroup.items.map((skill, i) => (
+            <SkillCard
+              key={skill.name}
+              name={skill.name}
+              level={skill.level}
+              color={activeGroup.color}
+              bg={`${activeGroup.color}18`}
+              icon={activeGroup.icon}
+              index={i}
+            />
           ))}
         </div>
 
-        {/* Extra tools strip */}
-        <ToolsStrip />
       </div>
     </section>
   );
