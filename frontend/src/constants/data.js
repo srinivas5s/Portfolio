@@ -67,47 +67,57 @@ export const ABOUT_CARDS = [
 // Each category has a color used for the card accent border
 export const SKILLS = [
   {
-    category: "Frontend",
-    color: "#E8FF47",   // lime
-    icon: "◈",
+    category: "Languages",
     items: [
-      { name: "React", level: 90 },
-      { name: "JavaScript", level: 88 },
-      { name: "Tailwind CSS", level: 85 },
-      { name: "HTML5 / CSS3", level: 92 },
+      { name: "C", logo: "/assets/c.png" },
+      { name: "C++", logo: "/assets/cpp.png" },
+      { name: "JavaScript", logo: "/assets/javascript.png" },
+      { name: "TypeScript", logo: "/assets/typescript.png" },
+      { name: "HTML", logo: "/assets/html.png" },
+      { name: "CSS", logo: "/assets/css.png" },
+      { name: "Python", logo: "/assets/python.png" },
     ],
   },
   {
-    category: "Backend",
-    color: "#7B61FF",   // violet
-    icon: "◉",
+    category: "Frameworks",
     items: [
-      { name: "Node.js", level: 85 },
-      { name: "Express.js", level: 85 },
-      { name: "REST APIs", level: 90 },
-      { name: "JWT Auth", level: 80 },
-      { name: "Socket.io", level: 65 },
+      { name: "React", logo: "/assets/react.png" },
+      { name: "Node.js", logo: "/assets/nodejs.png" },
+      { name: "Express", logo: "/assets/express.png" },
+      { name: "Tailwind", logo: "/assets/tailwind.png" },
+      { name: "Bootstrap", logo: "/assets/bootstrap.png" },
+      { name: "Redux", logo: "/assets/redux.png" },
+      { name: "NumPy", logo: "/assets/numpy.png" },
+      { name: "Pandas", logo: "/assets/pandas.png" },
     ],
   },
   {
-    category: "Database",
-    color: "#FF6B35",   // orange
-    icon: "◎",
+    category: "Databases",
     items: [
-      { name: "MongoDB", level: 85 },
-      { name: "Mongoose", level: 82 },
-      { name: "Firebase", level: 72 },
-      { name: "SQL Basics", level: 60 },
+      { name: "MongoDB", logo: "/assets/mongodb.png" },
+      { name: "MySQL", logo: "/assets/mysql.png" },
+      { name: "Firebase", logo: "/assets/firebase.png" },
     ],
   },
   {
-    category: "Tools & Technologies",
-    color: "#00D4AA",   // teal
-    icon: "◇",
+    category: "Tools",
     items: [
-      { name: "Git / GitHub", level: 88 },
-      { name: "Postman", level: 82 },
-      { name: "Vite / Vercel", level: 80 },
+      { name: "Git", logo: "/assets/git.png" },
+      { name: "GitHub", logo: "/assets/github.png" },
+      { name: "VS Code", logo: "/assets/vscode.png" },
+      { name: "Jupyter", logo: "/assets/jupyter.png" },
+      { name: "Cursor", logo: "/assets/cursor.png" },
+      { name: "Postman", logo: "/assets/postman.png" },
+    ],
+  },
+  {
+    category: "AI",
+    items: [
+      { name: "Chatgpt", logo: "/assets/chatgpt.png" },
+      { name: "Claude", logo: "/assets/claude.png" },
+      { name: "DeepSeek", logo: "/assets/deepseek.png" },
+      { name: "Gemini", logo: "/assets/gemini.png" },
+      { name: "Perplexity", logo: "/assets/perplexity.png" },
     ],
   },
 ];
@@ -212,12 +222,12 @@ export const GITHUB_USERNAME = "srinivas5s"; // used to build profile links
 // Optional section — remove if you're a fresher with no experience
 export const EXPERIENCE = [
   {
-    role:     "Full Stack Developer Intern",
-    company:  "BNSpire Pvt. Ltd.",
-    period:   "May 2026",
+    role: "Full Stack Developer Intern",
+    company: "BNSpire Pvt. Ltd.",
+    period: "May 2026",
     location: "Remote",
-    desc:     "Built RESTful APIs with Node.js/Express, developed React dashboards, and integrated third-party payment APIs. Improved API response time by 30% through query optimization.",
-    stack:    ["React", "Node.js", "MongoDB", "Express"],
+    desc: "Built RESTful APIs with Node.js/Express, developed React dashboards, and integrated third-party payment APIs. Improved API response time by 30% through query optimization.",
+    stack: ["React", "Node.js", "MongoDB", "Express"],
   },
   // Add more experience objects as needed
 ];

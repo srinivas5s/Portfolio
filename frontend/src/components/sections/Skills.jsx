@@ -1,93 +1,44 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import { SKILLS } from "../../constants/data";
 import SectionHeader from "../ui/SectionHeader";
 
-// ─── Proficiency label from level ────────────────────────────
-function getLevelLabel(level) {
-  if (level >= 90) return "Expert";
-  if (level >= 80) return "Advanced";
-  if (level >= 65) return "Proficient";
-  return "Familiar";
-}
+// ─── Skill Card ───────────────────────────────────────────────
+function SkillCard({ name, logo, index }) {
+  const [visible, setVisible] = useState(false);
 
-// ─── Individual skill card ────────────────────────────────────
-function SkillCard({ name, level, color, bg, icon, index }) {
-  const label = getLevelLabel(level);
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), index * 60);
+    return () => clearTimeout(timer);
+  }, [index, name]);
 
   return (
-    <div
-      className={[
-        "card rounded-2xl p-5",
-        "flex flex-col items-center gap-3",
-        "hover:-translate-y-1 transition-transform duration-150",
-      ].join(" ")}
-      style={{
-        borderTop: `2px solid ${color}30`,
-        animationDelay: `${index * 35}ms`,
-      }}
-    >
-      {/* Icon badge */}
+    <div className="flex flex-col items-center gap-2.5" role="listitem">
       <div
-        className="w-11 h-11 rounded-xl flex items-center justify-center text-xs font-mono font-bold"
-        style={{ background: bg, color }}
-        aria-hidden="true"
+        className={[
+          "w-full aspect-square rounded-[18px]",
+          "border border-(--border-subtle)",
+          "flex items-center justify-center",
+          "bg-(--bg-primary)",
+          "hover:-translate-y-1.5 hover:scale-[1.04] hover:border-(--border-primary)",
+          "cursor-default",
+        ].join(" ")}
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0) scale(1)" : "translateY(20px) scale(0.95)",
+          transition: `opacity 0.35s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1)`,
+          transitionDelay: `${index * 60}ms`,
+        }}
       >
-        {icon}
-      </div>
-
-      {/* Skill name */}
-      <span className="text-sm font-medium text-(--text-secondary) text-center leading-tight">
-        {name}
-      </span>
-
-      {/* Level bar */}
-      <div
-        className="w-12 h-0.75 rounded-full bg-(--bg-hover) overflow-hidden"
-        role="progressbar"
-        aria-valuenow={level}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-label={`${name}: ${level}%`}
-      >
-        <div
-          className="h-full rounded-full"
-          style={{ width: `${level}%`, background: color }}
+        <img
+          src={logo}
+          alt={`${name} logo`}
+          className="w-12 h-12 object-contain"
+          loading="lazy"
         />
       </div>
-
-      {/* Proficiency label */}
-      <span className="font-mono text-[10px] text-(--text-tertiary)">
-        {label}
+      <span className="text-[13px] font-medium text-(--text-secondary) text-center">
+        {name}
       </span>
-    </div>
-  );
-}
-
-// ─── Category filter tabs ─────────────────────────────────────
-function CategoryTabs({ skills, active, onChange }) {
-  return (
-    <div
-      className="flex flex-wrap gap-2.5 mb-10"
-      role="tablist"
-      aria-label="Skill categories"
-    >
-      {skills.map((group, i) => (
-        <button
-          key={group.category}
-          role="tab"
-          aria-selected={active === i}
-          onClick={() => onChange(i)}
-          className={[
-            "px-5 py-2 rounded-full text-sm font-medium",
-            "border transition-all duration-150",
-            active === i
-              ? "bg-(--text-primary) text-(--bg-primary) border-(--text-primary)"
-              : "bg-transparent text-(--text-secondary) border-(--border-subtle) hover:bg-(--bg-hover) hover:text-(--text-primary)",
-          ].join(" ")}
-        >
-          {group.category}
-        </button>
-      ))}
     </div>
   );
 }
@@ -95,7 +46,6 @@ function CategoryTabs({ skills, active, onChange }) {
 // ─── Main Skills Section ──────────────────────────────────────
 export default function Skills() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeGroup = SKILLS[activeIndex];
 
   return (
     <section
@@ -105,7 +55,7 @@ export default function Skills() {
     >
       <div className="container-main">
 
-        {/* Section header */}
+        {/* Section header — untouched from original */}
         <SectionHeader
           label="Expertise"
           number={2}
@@ -116,27 +66,42 @@ export default function Skills() {
         />
 
         {/* Category tabs */}
-        <CategoryTabs
-          skills={SKILLS}
-          active={activeIndex}
-          onChange={setActiveIndex}
-        />
-
-        {/* Skills grid */}
         <div
-          key={activeGroup.category}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-3"
-          role="tabpanel"
-          aria-label={`${activeGroup.category} skills`}
+          className="flex flex-wrap gap-2.5 mb-10"
+          role="tablist"
+          aria-label="Skill categories"
         >
-          {activeGroup.items.map((skill, i) => (
+          {SKILLS.map((group, i) => (
+            <button
+              key={group.category}
+              role="tab"
+              aria-selected={activeIndex === i}
+              onClick={() => setActiveIndex(i)}
+              className={[
+                "px-5 py-2 rounded-full text-sm font-medium",
+                "border-[1.5px] transition-all duration-150",
+                activeIndex === i
+                  ? "bg-(--text-primary) text-(--bg-primary) border-(--text-primary)"
+                  : "bg-transparent text-(--text-secondary) border-(--border-secondary) hover:border-(--border-primary) hover:text-(--text-primary)",
+              ].join(" ")}
+            >
+              {group.category}
+            </button>
+          ))}
+        </div>
+
+        {/* Skills grid — key remount triggers animation on tab switch */}
+        <div
+          key={activeIndex}
+          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-4"
+          role="list"
+          aria-label={`${SKILLS[activeIndex].category} skills`}
+        >
+          {SKILLS[activeIndex].items.map((skill, i) => (
             <SkillCard
               key={skill.name}
               name={skill.name}
-              level={skill.level}
-              color={activeGroup.color}
-              bg={`${activeGroup.color}18`}
-              icon={activeGroup.icon}
+              logo={skill.logo}
               index={i}
             />
           ))}
