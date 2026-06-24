@@ -223,8 +223,8 @@ export const GITHUB_USERNAME = "srinivas5s"; // used to build profile links
 export const EXPERIENCE = [
   {
     role: "Full Stack Developer Intern",
-    company: "BNSpire Pvt. Ltd.",
-    period: "May 2026",
+    company: "BNspire Pvt. Ltd.",
+    period: "10 May 2026 - 10 June 2026",
     location: "Remote",
     desc: "Built RESTful APIs with Node.js/Express, developed React dashboards, and integrated third-party payment APIs. Improved API response time by 30% through query optimization.",
     stack: ["React", "Node.js", "MongoDB", "Express"],
