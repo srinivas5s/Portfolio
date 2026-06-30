@@ -393,7 +393,6 @@ export default function Projects() {
                     title="Things I've built."
                     titleAccent="built"
                     subtitle="A selection of projects across full stack development and AI integration."
-                    align="center"
                     id="projects-heading"
                 />
 

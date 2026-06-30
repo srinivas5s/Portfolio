@@ -59,18 +59,7 @@ export function useScrollReveal(ref = null, options = {}) {
 }
 
 // ─── Global Reveal Hook ───────────────────────────────────────
-/**
- * useGlobalScrollReveal
- * Call once at the App level. Automatically observes every
- * element with className "reveal" and toggles "in-view" on them.
- *
- * Usage:
- *   // In App.jsx
- *   useGlobalScrollReveal();
- *
- *   // In any component JSX
- *   <div className="reveal reveal-delay-1">...</div>
- */
+
 export function useGlobalScrollReveal(options = {}) {
   const config = { ...DEFAULT_OPTIONS, ...options };
 
@@ -116,21 +105,7 @@ export function useGlobalScrollReveal(options = {}) {
 }
 
 // ─── Stagger Children Hook ────────────────────────────────────
-/**
- * useStaggerReveal
- * Observes a container ref and staggers reveal of its
- * direct children with increasing delays.
- *
- * Usage:
- *   const containerRef = useRef(null);
- *   useStaggerReveal(containerRef, { staggerMs: 80 });
- *
- *   <div ref={containerRef}>
- *     <div>Child 1</div>  ← animates at 0ms
- *     <div>Child 2</div>  ← animates at 80ms
- *     <div>Child 3</div>  ← animates at 160ms
- *   </div>
- */
+
 export function useStaggerReveal(containerRef, options = {}) {
   const { staggerMs = 80, threshold = 0.1, triggerOnce = true } = options;
 
@@ -175,15 +150,7 @@ export function useStaggerReveal(containerRef, options = {}) {
 }
 
 // ─── useScrollProgress ───────────────────────────────────────
-/**
- * useScrollProgress
- * Returns the page scroll percentage (0–100).
- * Used to drive the scroll progress bar at the top of the page.
- *
- * Usage:
- *   const scrollPct = useScrollProgress();
- *   <div style={{ width: `${scrollPct}%` }} />
- */
+
 export function useScrollProgress() {
   const [scrollPct, setScrollPct] = useState(0);
 
@@ -213,49 +180,36 @@ export function useScrollProgress() {
 }
 
 // ─── useActiveSection ─────────────────────────────────────────
-/**
- * useActiveSection
- * Tracks which section is currently in the viewport.
- * Used to highlight the active nav link as user scrolls.
- *
- * Usage:
- *   const activeSection = useActiveSection(["hero","about","skills"]);
- *   // returns "about" when about section is in view
- */
+
 export function useActiveSection(sectionIds = []) {
   const [activeSection, setActiveSection] = useState(sectionIds[0] || "");
 
   useEffect(() => {
     if (!sectionIds.length) return;
 
-    const observers = [];
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.35;
 
-    sectionIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (!element) return;
+      let currentSection = sectionIds[0];
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          // Update active section when element is >= 40% visible
-          if (entry.isIntersecting) {
-            setActiveSection(id);
-          }
-        },
-        {
-          threshold: 0.4,
-          // Shrink the root viewport so section activates
-          // when it's well into view, not just barely visible
-          rootMargin: "-10% 0px -10% 0px",
+      sectionIds.forEach((id) => {
+        const section = document.getElementById(id);
+
+        if (!section) return;
+
+        if (scrollPosition >= section.offsetTop) {
+          currentSection = id;
         }
-      );
+      });
 
-      observer.observe(element);
-      observers.push(observer);
-    });
+      setActiveSection(currentSection);
+    };
 
-    // Cleanup all observers on unmount
-    return () => observers.forEach((obs) => obs.disconnect());
-  }, [sectionIds.join(",")]);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [sectionIds]);
 
   return activeSection;
 }

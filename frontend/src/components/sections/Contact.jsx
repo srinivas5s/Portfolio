@@ -481,7 +481,6 @@ export default function Contact() {
           title="Let's work together."
           titleAccent="work"
           subtitle="Have a project in mind or a role to discuss? I'm always happy to connect."
-          align="center"
           id="contact-heading"
         />
 

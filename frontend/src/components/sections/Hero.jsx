@@ -355,14 +355,16 @@ export default function Hero() {
                         </span>
 
                         {/* Name — main focal point */}
-                        <span className="block">
+                        <span
+                            className="block font-['Space_Grotesk'] font-bold tracking-tight"
+                        >
                             {PERSONAL_INFO.name}
                         </span>
 
-                        {/* Last name with accent underline */}
-                        <span className="block relative w-fit">
+                        {/* <span
+                            className="block relative w-fit font-['Outfit'] font-extrabold tracking-tight"
+                        >
                             {PERSONAL_INFO.lastName}
-                            {/* Lime underline accent */}
                             <span
                                 className={[
                                     "absolute -bottom-2 left-0",
@@ -373,7 +375,7 @@ export default function Hero() {
                                 style={{ width: "60%" }}
                                 aria-hidden="true"
                             />
-                        </span>
+                        </span> */}
                     </h1>
 
                     {/* Typewriter role */}
@@ -386,12 +388,12 @@ export default function Hero() {
                         aria-label={`Current role: ${displayText}`}
                     >
                         {/* Bracket prefix — terminal aesthetic */}
-                        <span
+                        {/* <span
                             className="font-mono text-(--accent-primary) text-xl leading-none"
                             aria-hidden="true"
                         >
                             &gt;_
-                        </span>
+                        </span> */}
 
                         <span
                             className={[

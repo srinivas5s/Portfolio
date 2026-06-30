@@ -27,7 +27,6 @@ export const PERSONAL_INFO = {
 export const TYPEWRITER_ROLES = [
   "Full Stack Developer",
   "MERN Stack Engineer",
-  "AI/ML Engineer",
   "Problem Solver",
 ];
 
@@ -57,9 +56,9 @@ export const ABOUT_CARDS = [
     desc: "Strong focus on logic building, DSA, and writing clean, maintainable code.",
   },
   {
-    icon: "📐",
-    title: "Frontend Focus",
-    desc: "Creating responsive and user-friendly interfaces with attention to UI/UX.",
+    icon: "🏗️",
+    title: "System Design",
+    desc: "Focused on scalable, clean, and efficient application design.",
   },
 ];
 
@@ -82,7 +81,7 @@ export const SKILLS = [
     category: "Frameworks",
     items: [
       { name: "React", logo: "/assets/react.png" },
-      { name: "Node.js", logo: "/assets/nodejs.png" },
+      { name: "Node.js", logo: "/assets/node.png" },
       { name: "Express", logo: "/assets/express.png" },
       { name: "Tailwind", logo: "/assets/tailwind.png" },
       { name: "Bootstrap", logo: "/assets/bootstrap.png" },
@@ -106,20 +105,20 @@ export const SKILLS = [
       { name: "GitHub", logo: "/assets/github.png" },
       { name: "VS Code", logo: "/assets/vscode.png" },
       { name: "Jupyter", logo: "/assets/jupyter.png" },
-      { name: "Cursor", logo: "/assets/cursor.png" },
       { name: "Postman", logo: "/assets/postman.png" },
+      // { name: "Cursor", logo: "/assets/cursor.png" },
     ],
   },
-  {
-    category: "AI",
-    items: [
-      { name: "Chatgpt", logo: "/assets/chatgpt.png" },
-      { name: "Claude", logo: "/assets/claude.png" },
-      { name: "DeepSeek", logo: "/assets/deepseek.png" },
-      { name: "Gemini", logo: "/assets/gemini.png" },
-      { name: "Perplexity", logo: "/assets/perplexity.png" },
-    ],
-  },
+  // {
+  //   category: "AI",
+  //   items: [
+  //     { name: "Chatgpt", logo: "/assets/chatgpt.png" },
+  //     { name: "Claude", logo: "/assets/claude.png" },
+  //     { name: "DeepSeek", logo: "/assets/deepseek.png" },
+  //     { name: "Gemini", logo: "/assets/gemini.png" },
+  //     { name: "Perplexity", logo: "/assets/perplexity.png" },
+  //   ],
+  // },
 ];
 
 // ─── Projects ────────────────────────────────────────────────
@@ -154,7 +153,7 @@ export const PROJECTS = [
     shortDesc: "A Learning platform that adapts to your progress.",
     longDesc:
       "An intelligent e-learning platform integrating OpenAI GPT-4 to generate personalized quizzes, summarize lecture content, and adapt course difficulty based on user performance analytics.",
-    stack: ["React", "Node.js", "MongoDB"],
+    stack: ["React.js", "Node.js", "Express.js", "MongoDB"],
     highlights: [
       "GPT-4 powered quiz generation",
       "Adaptive difficulty algorithm",
@@ -223,11 +222,11 @@ export const GITHUB_USERNAME = "srinivas5s"; // used to build profile links
 export const EXPERIENCE = [
   {
     role: "Full Stack Developer Intern",
-    company: "BNspire Pvt. Ltd.",
+    company: "BNspire Technologies Pvt. Ltd.",
     period: "10 May 2026 - 10 June 2026",
     location: "Remote",
     desc: "Built RESTful APIs with Node.js/Express, developed React dashboards, and integrated third-party payment APIs. Improved API response time by 30% through query optimization.",
-    stack: ["React", "Node.js", "MongoDB", "Express"],
+    stack: ["React.js", "Node.js", "MongoDB", "Express.js"],
   },
   // Add more experience objects as needed
 ];
