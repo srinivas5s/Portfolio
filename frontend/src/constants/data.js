@@ -160,7 +160,7 @@ export const PROJECTS = [
       "Progress analytics with Chart.js",
       "Course content summarization with AI",
     ],
-    github: "https://github.com/srinivas5s/LMS",
+    github: "https://github.com/srinivas5s/E-Learning",
     live: "https://srinivas-senapati.vercel.app",
     status: "In Progress",
   },
