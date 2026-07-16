@@ -228,6 +228,14 @@ export const EXPERIENCE = [
     desc: "Built RESTful APIs with Node.js/Express, developed React dashboards, and integrated third-party payment APIs. Improved API response time by 30% through query optimization.",
     stack: ["React.js", "Node.js", "MongoDB", "Express.js"],
   },
+  {
+    role: "Machine Learning Intern",
+    company: "InternPe",
+    period: "08 Jun 2026 - Present",
+    location: "Remote",
+    desc: "Built ML models for predictive analytics, implemented data preprocessing pipelines, and deployed models using Flask APIs. Achieved 85% accuracy on test datasets.",
+    stack: ["Python", "TensorFlow", "Scikit-learn", "Flask"],
+  },
   // Add more experience objects as needed
 ];
 
