@@ -36,11 +36,7 @@ function AmbientBackground() {
                 </filter>
                 <rect width="100%" height="100%" filter="url(#hero-grain)" />
             </svg>
-
-            <div
-                className="absolute top-1/3 left-0 right-0 h-px opacity-10"
-                style={{ background: "linear-gradient(90deg, transparent, var(--accent-primary), transparent)" }}
-            />
+            
         </div>
     );
 }
