@@ -4,7 +4,6 @@ import { useTypewriter } from "../../hooks/useTypewriter";
 import Button, { DownloadIcon } from "../ui/Button";
 import Badge from "../ui/Badge";
 
-// ─── Ambient Background ──────────────────────────────────────
 function AmbientBackground() {
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
@@ -68,7 +67,6 @@ function NetworkGraphic({ parallax }) {
                     </filter>
                 </defs>
 
-                {/* Slow-rotating outer ring — 60s, ambient, non-distracting */}
                 <g className="hero-orbit-ring" style={{ transformOrigin: "210px 208px" }}>
                     <circle
                         cx="210" cy="208" r="175"
@@ -81,7 +79,6 @@ function NetworkGraphic({ parallax }) {
                     <circle cx="210" cy="33" r="3" fill="var(--accent-primary)" opacity="0.7" filter="url(#node-glow)" />
                 </g>
 
-                {/* Connections: hub to each satellite, with traveling pulse */}
                 {nodes.map((n, i) => (
                     <g key={`line-${n.id}`}>
                         <line
@@ -104,12 +101,10 @@ function NetworkGraphic({ parallax }) {
                     </g>
                 ))}
 
-                {/* Satellite nodes */}
                 {nodes.map((n) => (
                     <circle key={n.id} cx={n.x} cy={n.y} r={n.r} fill={n.color} opacity="0.85" filter="url(#node-glow)" />
                 ))}
 
-                {/* Hub node */}
                 <circle cx={hub.x} cy={hub.y} r={hub.r} fill="var(--bg-primary)" stroke="var(--accent-primary)" strokeWidth="2" />
                 <circle cx={hub.x} cy={hub.y} r="3.5" fill="var(--accent-primary)" filter="url(#node-glow)" />
             </svg>
@@ -174,7 +169,6 @@ function StatusRail() {
     );
 }
 
-// ─── Stats Strip ──────────────────────────────────────────────
 function StatsStrip() {
     const stats = [
         { value: "3+", label: "Years" },
@@ -205,7 +199,6 @@ function StatsStrip() {
     );
 }
 
-// ─── Social Links ─────────────────────────────────────────────
 function SocialLinks() {
     const links = [
         { label: "GitHub", short: "GH", href: PERSONAL_INFO.socials.github },
@@ -252,7 +245,6 @@ function SocialLinks() {
     );
 }
 
-// ─── Scroll Indicator ─────────────────────────────────────────
 function ScrollIndicator() {
     return (
         <div
@@ -269,7 +261,6 @@ function ScrollIndicator() {
     );
 }
 
-// ─── Main Hero Section ────────────────────────────────────────
 export default function Hero() {
     const { displayText, isTyping } = useTypewriter(TYPEWRITER_ROLES, {
         typeSpeed: 75,

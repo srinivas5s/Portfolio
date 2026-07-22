@@ -5,7 +5,6 @@ import SectionHeader from "../ui/SectionHeader";
 import Badge, { BadgeGroup } from "../ui/Badge";
 import Button from "../ui/Button";
 
-// ─── Icons ───────────────────────────────────────────────────
 function GitHubIcon() {
     return (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
@@ -36,7 +35,6 @@ function CheckIcon() {
     );
 }
 
-// ─── Project Number ───────────────────────────────────────────
 function ProjectNumber({ index }) {
     return (
         <span
@@ -52,8 +50,6 @@ function ProjectNumber({ index }) {
     );
 }
 
-// ─── Featured Project Card ────────────────────────────────────
-// Large card — takes full width, shows all details
 function FeaturedCard({ project, index }) {
     const [hovered, setHovered] = useState(false);
     const isEven = index % 2 === 0;
@@ -73,7 +69,6 @@ function FeaturedCard({ project, index }) {
             onMouseLeave={() => setHovered(false)}
             aria-label={`Featured project: ${project.title}`}
         >
-            {/* Accent glow on hover */}
             <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
                 style={{
@@ -82,7 +77,6 @@ function FeaturedCard({ project, index }) {
                 aria-hidden="true"
             />
 
-            {/* Top accent line */}
             <div
                 className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl transition-all duration-300"
                 style={{
@@ -97,11 +91,9 @@ function FeaturedCard({ project, index }) {
                 className={[
                     "grid grid-cols-1 lg:grid-cols-2",
                     "gap-0",
-                    // Alternate layout direction for visual rhythm
                     isEven ? "" : "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1",
                 ].join(" ")}
             >
-                {/* Left — Visual panel */}
                 <div
                     className={[
                         "relative flex items-center justify-center",
@@ -116,7 +108,6 @@ function FeaturedCard({ project, index }) {
                     }}
                     aria-hidden="true"
                 >
-                    {/* Large emoji */}
                     <span
                         className={[
                             "text-[6rem] select-none",
@@ -127,7 +118,6 @@ function FeaturedCard({ project, index }) {
                         {project.emoji}
                     </span>
 
-                    {/* Decorative corner grid */}
                     <div className="absolute inset-0 opacity-5">
                         <svg className="w-full h-full">
                             <defs>
@@ -139,21 +129,17 @@ function FeaturedCard({ project, index }) {
                         </svg>
                     </div>
 
-                    {/* Status badge — top right of visual panel */}
                     <div className="absolute top-4 right-4">
                         <Badge variant="status" status={project.status} />
                     </div>
 
-                    {/* Project number — bottom left */}
                     <div className="absolute bottom-4 left-4">
                         <ProjectNumber index={index} />
                     </div>
                 </div>
 
-                {/* Right — Content panel */}
                 <div className="flex flex-col justify-between p-8 lg:p-10">
                     <div>
-                        {/* Header */}
                         <div className="mb-5">
                             <h3
                                 className={[
@@ -173,7 +159,6 @@ function FeaturedCard({ project, index }) {
                             </p>
                         </div>
 
-                        {/* Highlights */}
                         {project.highlights && project.highlights.length > 0 && (
                             <ul
                                 className="space-y-2 mb-6"
@@ -193,7 +178,6 @@ function FeaturedCard({ project, index }) {
                             </ul>
                         )}
 
-                        {/* Tech stack */}
                         <BadgeGroup className="mb-8">
                             {project.stack.map((tech) => (
                                 <Badge key={tech} variant="tech">
@@ -203,7 +187,6 @@ function FeaturedCard({ project, index }) {
                         </BadgeGroup>
                     </div>
 
-                    {/* Action links */}
                     <div className="flex flex-wrap items-center gap-3">
                         <Button
                             variant="primary"
@@ -232,8 +215,7 @@ function FeaturedCard({ project, index }) {
     );
 }
 
-// ─── Grid Project Card ────────────────────────────────────────
-// Smaller card for non-featured projects
+
 function GridCard({ project, index }) {
     const [hovered, setHovered] = useState(false);
 
@@ -249,7 +231,6 @@ function GridCard({ project, index }) {
             onMouseLeave={() => setHovered(false)}
             aria-label={`Project: ${project.title}`}
         >
-            {/* Visual header */}
             <div
                 className={[
                     "relative flex items-center justify-center",
@@ -271,7 +252,6 @@ function GridCard({ project, index }) {
                     {project.emoji}
                 </span>
 
-                {/* Status + number row */}
                 <div className="absolute top-3 right-3">
                     <Badge variant="status" status={project.status} />
                 </div>
@@ -279,7 +259,6 @@ function GridCard({ project, index }) {
                     <ProjectNumber index={index} />
                 </div>
 
-                {/* Accent line on hover */}
                 <div
                     className="absolute bottom-0 left-0 right-0 h-0.5 transition-all duration-300"
                     style={{
@@ -290,9 +269,7 @@ function GridCard({ project, index }) {
                 />
             </div>
 
-            {/* Card body */}
             <div className="flex flex-col flex-1 p-6">
-                {/* Title */}
                 <h3
                     className={[
                         "font-display font-bold text-base tracking-tight",
@@ -304,12 +281,10 @@ function GridCard({ project, index }) {
                     {project.title}
                 </h3>
 
-                {/* Short description */}
                 <p className="text-sm text-(--text-secondary) leading-relaxed mb-4 flex-1">
                     {project.shortDesc}
                 </p>
 
-                {/* Tech stack */}
                 <BadgeGroup className="mb-5">
                     {project.stack.slice(0, 4).map((tech) => (
                         <Badge key={tech} variant="tech">
@@ -323,7 +298,6 @@ function GridCard({ project, index }) {
                     )}
                 </BadgeGroup>
 
-                {/* Links */}
                 <div className="flex items-center gap-2 pt-4 border-t border-(--border-subtle)">
                     <a
                         href={project.github}
@@ -369,12 +343,10 @@ function GridCard({ project, index }) {
     );
 }
 
-// ─── Main Projects Section ────────────────────────────────────
 export default function Projects() {
     const featuredProjects = PROJECTS.filter((p) => p.featured);
     const gridProjects = PROJECTS.filter((p) => !p.featured);
 
-    // Stagger grid cards
     const gridRef = useRef(null);
     useStaggerReveal(gridRef, { staggerMs: 90, threshold: 0.05 });
 
@@ -386,7 +358,6 @@ export default function Projects() {
         >
             <div className="container-main">
 
-                {/* Section header */}
                 <SectionHeader
                     label="Work"
                     number={3}
@@ -396,7 +367,6 @@ export default function Projects() {
                     id="projects-heading"
                 />
 
-                {/* ── Featured projects ── */}
                 {featuredProjects.length > 0 && (
                     <div
                         className="space-y-6 mb-16"
@@ -416,7 +386,6 @@ export default function Projects() {
                     </div>
                 )}
 
-                {/* ── Grid divider ── */}
                 {gridProjects.length > 0 && (
                     <div className="flex items-center gap-4 mb-10 reveal">
                         <div className="flex-1 h-px bg-(--border-subtle)" aria-hidden="true" />
@@ -427,7 +396,6 @@ export default function Projects() {
                     </div>
                 )}
 
-                {/* ── Grid projects ── */}
                 {gridProjects.length > 0 && (
                     <div
                         ref={gridRef}
@@ -449,7 +417,6 @@ export default function Projects() {
                     </div>
                 )}
 
-                {/* ── GitHub CTA ── */}
                 <div className="flex justify-center mt-14 reveal">
                     <Button
                         variant="outline"

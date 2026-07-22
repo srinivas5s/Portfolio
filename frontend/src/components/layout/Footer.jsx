@@ -47,7 +47,6 @@ function SocialLink({ href, icon, label }) {
   );
 }
 
-// ─── Footer Nav Link ──────────────────────────────────────────
 function FooterNavLink({ href, label }) {
   const handleClick = (e) => {
     e.preventDefault();
@@ -93,11 +92,9 @@ function BuiltWith() {
   );
 }
 
-// ─── Main Footer ──────────────────────────────────────────────
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  // Social links assembled from PERSONAL_INFO
   const socialLinks = [
     {
       key: "github",
@@ -136,7 +133,6 @@ export default function Footer() {
       role="contentinfo"
     >
 
-      {/* ── Decorative background glow ── */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-150 h-50 pointer-events-none"
         aria-hidden="true"
@@ -145,12 +141,10 @@ export default function Footer() {
         }}
       />
 
-      {/* ── Top CTA band ── */}
       <div className="border-b border-(--border-subtle)">
         <div className="container-main py-14">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
 
-            {/* Left — final CTA copy */}
             <div className="max-w-md">
               <p className="font-mono text-xs tracking-widest text-(--accent-primary) uppercase mb-3">
                 Open to opportunities
@@ -169,7 +163,6 @@ export default function Footer() {
               </p>
             </div>
 
-            {/* Right — action buttons */}
             <div className="flex flex-col sm:flex-row gap-3 shrink-0">
               <Button
                 variant="primary"
@@ -193,13 +186,10 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── Main footer content ── */}
       <div className="container-main py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
 
-          {/* Column 1 — Brand */}
           <div className="space-y-4">
-            {/* Logo */}
             <div className="flex items-center gap-1">
               <span className="font-mono text-(--accent-primary) text-xl">&lt;</span>
               <span className="font-display font-bold text-lg text-(--text-primary) tracking-tight">
@@ -212,7 +202,6 @@ export default function Footer() {
               {PERSONAL_INFO.tagline}
             </p>
 
-            {/* Social links */}
             <div className="flex items-center gap-2 pt-1">
               {socialLinks.map((s) => (
                 <SocialLink key={s.key} href={s.href} icon={s.icon} label={s.label} />
@@ -220,7 +209,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2 — Quick Nav */}
           <div>
             <p className="font-mono text-xs tracking-widest text-(--text-tertiary) uppercase mb-5">
               Navigation
@@ -236,7 +224,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3 — Contact details */}
           <div>
             <p className="font-mono text-xs tracking-widest text-(--text-tertiary) uppercase mb-5">
               Contact
@@ -274,14 +261,12 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── Bottom bar ── */}
       <div className="border-t border-(--border-subtle)">
         <div className={[
           "container-main py-5",
           "flex flex-col sm:flex-row items-center justify-between gap-3",
         ].join(" ")}>
 
-          {/* Copyright */}
           <p className="text-xs text-(--text-tertiary) font-mono tracking-wide order-2 sm:order-1">
             © {currentYear}{" "}
             <span className="text-(--text-secondary)">
@@ -290,12 +275,10 @@ export default function Footer() {
             . All rights reserved.
           </p>
 
-          {/* Built with */}
           <div className="order-1 sm:order-2">
             <BuiltWith />
           </div>
 
-          {/* Back to top */}
           <button
             onClick={() =>
               document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" })

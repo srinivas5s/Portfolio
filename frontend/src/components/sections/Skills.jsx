@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { SKILLS } from "../../constants/data";
 import SectionHeader from "../ui/SectionHeader";
 
-// ─── Skill Card ───────────────────────────────────────────────
 function SkillCard({ name, logo, index }) {
   const [visible, setVisible] = useState(false);
 
@@ -43,7 +42,6 @@ function SkillCard({ name, logo, index }) {
   );
 }
 
-// ─── Main Skills Section ──────────────────────────────────────
 export default function Skills() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -55,7 +53,6 @@ export default function Skills() {
     >
       <div className="container-main">
 
-        {/* Section header — untouched from original */}
         <SectionHeader
           label="Expertise"
           number={2}
@@ -65,7 +62,6 @@ export default function Skills() {
           id="skills-heading"
         />
 
-        {/* Category tabs */}
         <div
           className="flex flex-wrap gap-2.5 mb-10"
           role="tablist"
@@ -90,7 +86,6 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Skills grid — key remount triggers animation on tab switch */}
         <div
           key={activeIndex}
           className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-4"

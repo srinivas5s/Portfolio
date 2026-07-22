@@ -41,7 +41,6 @@ function ThemeToggle() {
         e.currentTarget.style.boxShadow = "none";
       }}
     >
-      {/* Sliding pill */}
       <span
         aria-hidden="true"
         style={{
@@ -61,7 +60,6 @@ function ThemeToggle() {
         }}
       >
         {isDark ? (
-          // Moon — dark mode active
           <svg
             viewBox="0 0 16 16"
             fill="white"
@@ -70,7 +68,6 @@ function ThemeToggle() {
             <path d="M6 .278a.768.768 0 01.08.858 7.208 7.208 0 00-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 01.81.316.733.733 0 01-.031.893A8.349 8.349 0 018.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 016 .278z" />
           </svg>
         ) : (
-          // Sun — light mode active
           <svg
             viewBox="0 0 16 16"
             fill="white"
@@ -81,7 +78,6 @@ function ThemeToggle() {
         )}
       </span>
 
-      {/* Screen reader label */}
       <span className="sr-only">
         {isDark ? "Switch to light mode" : "Switch to dark mode"}
       </span>
@@ -89,7 +85,6 @@ function ThemeToggle() {
   );
 }
 
-// ─── Logo ─────────────────────────────────────────────────────
 function Logo({ onClick }) {
   return (
     <a href="#hero" onClick={onClick}
@@ -109,7 +104,6 @@ function Logo({ onClick }) {
   );
 }
 
-// ─── Nav Link ─────────────────────────────────────────────────
 function NavLink({ href, label, isActive, onClick }) {
   const handleClick = (e) => {
     e.preventDefault();
@@ -142,7 +136,6 @@ function NavLink({ href, label, isActive, onClick }) {
   );
 }
 
-// ─── Mobile Menu ──────────────────────────────────────────────
 function MobileMenu({ isOpen, onClose, activeSection }) {
   const { isDark, toggleTheme } = useTheme();
 
@@ -159,7 +152,6 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
 
   return (
     <>
-      {/* Backdrop */}
       <div onClick={onClose} aria-hidden="true"
         className={[
           "fixed inset-0 z-40",
@@ -169,7 +161,6 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
             : "opacity-0 pointer-events-none",
         ].join(" ")} />
 
-      {/* Panel */}
       <div role="dialog" aria-modal="true" aria-label="Navigation menu"
         className={[
           "fixed top-0 right-0 bottom-0 z-50 w-70",
@@ -180,7 +171,6 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
           isOpen ? "translate-x-0" : "translate-x-full",
         ].join(" ")}
       >
-        {/* Panel header */}
         <div className="flex items-center justify-between p-6
           border-b border-(--border-subtle)">
           <span className="font-mono text-xs tracking-widest
@@ -188,9 +178,7 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
             Navigation
           </span>
           <div className="flex items-center gap-3">
-            {/* Theme toggle inside mobile menu */}
             <ThemeToggle />
-            {/* Close */}
             <button onClick={onClose} aria-label="Close navigation menu"
               className={[
                 "w-8 h-8 flex items-center justify-center rounded-lg",
@@ -212,7 +200,6 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
           </div>
         </div>
 
-        {/* Links */}
         <nav className="flex-1 flex flex-col justify-center px-6 gap-1">
           {NAV_LINKS.map((link, i) => {
             const isActive = activeSection === link.href;
@@ -248,7 +235,6 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
           })}
         </nav>
 
-        {/* Footer */}
         <div className="p-6 border-t border-(--border-subtle)">
           <div className="flex items-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full text-(--text-secondary)
@@ -268,7 +254,6 @@ function MobileMenu({ isOpen, onClose, activeSection }) {
   );
 }
 
-// ─── Hamburger ────────────────────────────────────────────────
 function Hamburger({ isOpen, onClick }) {
   return (
     <button onClick={onClick}
@@ -304,7 +289,6 @@ function Hamburger({ isOpen, onClick }) {
   );
 }
 
-// ─── Main Navbar ──────────────────────────────────────────────
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -326,7 +310,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Scroll progress bar */}
       <div id="scroll-progress" style={{ width: `${scrollPct}%` }}
         aria-hidden="true" />
 
@@ -346,7 +329,6 @@ export default function Navbar() {
 
           <Logo onClick={handleLogoClick} />
 
-          {/* Desktop nav */}
           <nav aria-label="Main navigation">
             <ul className="hidden lg:flex items-center gap-8 list-none">
               {NAV_LINKS.map((link) => (
@@ -356,9 +338,7 @@ export default function Navbar() {
             </ul>
           </nav>
 
-          {/* Desktop right — toggle + availability + resume */}
           <div className="hidden lg:flex items-center gap-4">
-            {/* Availability pulse */}
             {PERSONAL_INFO.availability && (
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400
@@ -370,7 +350,6 @@ export default function Navbar() {
               </div>
             )}
 
-            {/* Theme toggle */}
             <ThemeToggle />
 
             <Button variant="outline" size="sm"
@@ -379,7 +358,6 @@ export default function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile hamburger */}
           <Hamburger isOpen={menuOpen}
             onClick={() => setMenuOpen((p) => !p)} />
         </div>

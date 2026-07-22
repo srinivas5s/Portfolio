@@ -14,7 +14,6 @@ function CapabilityCard({ icon, title, desc, index }) {
             className={[
                 "card p-6 rounded-xl",
                 "group cursor-default",
-                // Subtle top border accent on hover
                 "border-t-2 border-t-transparent",
                 "hover:border-t-(--accent-primary)",
             ].join(" ")}
@@ -22,7 +21,6 @@ function CapabilityCard({ icon, title, desc, index }) {
                 transitionDelay: `${index * 60}ms`,
             }}
         >
-            {/* Icon */}
             <div
                 className={[
                     "w-11 h-11 rounded-lg mb-4",
@@ -39,7 +37,6 @@ function CapabilityCard({ icon, title, desc, index }) {
                 {icon}
             </div>
 
-            {/* Title */}
             <h3
                 className={[
                     "font-display font-bold text-base",
@@ -52,7 +49,6 @@ function CapabilityCard({ icon, title, desc, index }) {
                 {title}
             </h3>
 
-            {/* Description */}
             <p className="text-sm text-(--text-secondary) leading-relaxed">
                 {desc}
             </p>

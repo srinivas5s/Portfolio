@@ -2,7 +2,6 @@
 
 @import "tailwindcss";
 
-/* ─── DARK THEME (default) ──────────────────────────────────── */
 :root,
 [data-theme="dark"] {
   --bg-primary: #0A0A0F;
@@ -27,23 +26,18 @@
   --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.60);
   --shadow-glow: 0 0 40px rgba(232, 255, 71, 0.15);
 
-  /* Nav specific */
   --nav-bg: rgba(10, 10, 15, 0.85);
   --nav-border: rgba(255, 255, 255, 0.06);
 
-  /* Skill bar glow */
   --bar-glow: rgba(232, 255, 71, 0.35);
 
-  /* Contribution heatmap empty cell */
   --contrib-empty: #1C1C28;
 
-  /* Toggle button */
   --toggle-bg: #1C1C28;
   --toggle-border: rgba(255, 255, 255, 0.10);
   --toggle-icon: #E8FF47;
 }
 
-/* ─── LIGHT THEME ───────────────────────────────────────────── */
 [data-theme="light"] {
   --bg-primary: #F7F5F0;
   --bg-secondary: #EFECEA;
@@ -79,7 +73,6 @@
   --toggle-icon: #6B48FF;
 }
 
-/* ─── Shared typography tokens ──────────────────────────────── */
 :root {
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Space Grotesk', system-ui, sans-serif;
@@ -93,7 +86,6 @@
   --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ─── Base Reset ────────────────────────────────────────────── */
 @layer base {
 
   *,
@@ -119,13 +111,11 @@
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
-    /* Smooth theme transition — everything fades on toggle */
     transition:
       background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
       color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Grain overlay */
   body::before {
     content: '';
     position: fixed;
@@ -181,7 +171,6 @@
   }
 }
 
-/* ─── Scrollbar ──────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -195,7 +184,6 @@
   border-radius: 10px;
 }
 
-/* ─── Scroll Progress ───────────────────────────────────────── */
 #scroll-progress {
   position: fixed;
   top: 0;
@@ -210,7 +198,6 @@
   box-shadow: 0 0 10px var(--accent-secondary);
 }
 
-/* ─── Components ─────────────────────────────────────────────── */
 @layer components {
 
   .container-main {
@@ -296,7 +283,6 @@
     color: var(--accent-secondary);
   }
 
-  /* ── Theme toggle button ── */
   .theme-toggle {
     position: relative;
     width: 56px;
@@ -321,7 +307,6 @@
     outline-offset: 3px;
   }
 
-  /* The sliding pill inside the toggle */
   .theme-toggle-pill {
     position: absolute;
     top: 3px;
@@ -336,7 +321,6 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   }
 
-  /* Dark → pill on left (left: 3px), Light → pill on right (left: 33px) */
   [data-theme="dark"] .theme-toggle-pill {
     transform: translateX(3px);
   }
@@ -346,7 +330,6 @@
   }
 }
 
-/* ─── Animations ─────────────────────────────────────────────── */
 @layer utilities {
 
   @keyframes cursorBlink {
@@ -514,7 +497,6 @@
     }
   }
 
-  /* ── Reveal ── */
   .reveal {
     opacity: 0;
     transform: translateY(28px) scale(0.99);
@@ -547,7 +529,6 @@
     transition-delay: 0.38s;
   }
 
-  /* ── Animation classes ── */
   .animate-fade-up {
     animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
@@ -588,7 +569,6 @@
     animation: drawLine 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
-  /* ── Delay utilities ── */
   .delay-100 {
     animation-delay: 0.10s;
   }
@@ -660,7 +640,6 @@
     animation: shimmer 1.5s linear infinite;
   }
 
-  /* ── Theme transition — smooth color swap on all elements ── */
   *,
   *::before,
   *::after {
@@ -669,7 +648,6 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* But don't override animation-specific transitions */
   .reveal,
   .card,
   .theme-toggle,

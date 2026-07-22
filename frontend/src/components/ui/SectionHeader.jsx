@@ -1,12 +1,10 @@
 import Badge from "./Badge";
 
 function HighlightedTitle({ title, accent }) {
-  // No accent word — render plain title
   if (!accent) {
     return <>{title}</>;
   }
 
-  // Find accent word position (case-insensitive)
   const regex = new RegExp(`(${accent})`, "gi");
   const parts = title.split(regex);
 
@@ -14,7 +12,6 @@ function HighlightedTitle({ title, accent }) {
     <>
       {parts.map((part, i) =>
         regex.test(part) ? (
-          // Accent word — lime color with italic Fraunces serif
           <span
             key={i}
             className="text-(--accent-primary) italic"
@@ -32,8 +29,7 @@ function HighlightedTitle({ title, accent }) {
 }
 
 // ─── Number Decoration ───────────────────────────────────────
-// Large faded section number — appears behind the heading
-// Adds editorial depth, like a magazine layout
+
 function SectionNumber({ number }) {
   if (!number) return null;
 
@@ -45,7 +41,7 @@ function SectionNumber({ number }) {
         "text-[8rem] leading-none",
         "text-(--text-primary)/3",
         "select-none pointer-events-none",
-        "hidden lg:block",           // only on large screens
+        "hidden lg:block",          
       ].join(" ")}
       aria-hidden="true"
     >
@@ -58,15 +54,15 @@ function SectionNumber({ number }) {
 /**
  * SectionHeader
  *
- * @prop {string}  label        - Mono uppercase label (e.g. "About Me")
- * @prop {string}  title        - Main heading text
- * @prop {string}  subtitle     - Optional supporting description
- * @prop {string}  titleAccent  - Word(s) in title to highlight in accent color
- * @prop {string}  align        - "left" (default) | "center"
- * @prop {number}  number       - Optional section number for bg decoration
- * @prop {string}  labelColor   - Custom color for the mono label
- * @prop {string}  className    - Additional wrapper classes
- * @prop {ReactNode} children   - Optional content below subtitle
+ * @prop {string}  label        
+ * @prop {string}  title        
+ * @prop {string}  subtitle   
+ * @prop {string}  titleAccent  
+ * @prop {string}  align       
+ * @prop {number}  number       
+ * @prop {string}  labelColor  
+ * @prop {string}  className  
+ * @prop {ReactNode} children  
  */
 function SectionHeader({
   label = "",
@@ -84,15 +80,13 @@ function SectionHeader({
   return (
     <div
       className={[
-        "relative mb-14",                               // spacing below header
-        isCenter ? "text-center mx-auto" : "text-left", // alignment
+        "relative mb-14",                              
+        isCenter ? "text-center mx-auto" : "text-left", 
         className,
       ].join(" ")}
     >
-      {/* ── Faded section number (decorative) ── */}
       <SectionNumber number={number} />
 
-      {/* ── Mono label ── */}
       {label && (
         <div
           className={[
@@ -102,7 +96,7 @@ function SectionHeader({
         >
           <Badge
             variant="mono"
-            dash={!isCenter}   // show dash only on left-aligned headers
+            dash={!isCenter}   
             color={labelColor}
           >
             {label}
@@ -110,24 +104,20 @@ function SectionHeader({
         </div>
       )}
 
-      {/* ── Main Heading ── */}
       <h2
         className={[
           "reveal reveal-delay-1",
           "font-display font-bold",
           "text-(--text-primary)",
-          // Fluid type scale — big on desktop, readable on mobile
           "text-4xl sm:text-5xl lg:text-[3.5rem]",
           "leading-[1.05] tracking-tight",
           "mb-4",
-          // Limit width for readability on center alignment
           isCenter ? "max-w-2xl mx-auto" : "max-w-3xl",
         ].join(" ")}
       >
         <HighlightedTitle title={title} accent={titleAccent} />
       </h2>
 
-      {/* ── Subtitle ── */}
       {subtitle && (
         <p
           className={[
@@ -143,14 +133,12 @@ function SectionHeader({
         </p>
       )}
 
-      {/* ── Optional extra content (e.g. a CTA link) ── */}
       {children && (
         <div className="reveal reveal-delay-3 mt-6">
           {children}
         </div>
       )}
 
-      {/* ── Decorative accent line under label ── */}
       {!isCenter && (
         <div
           className="reveal absolute -left-8 top-0 hidden xl:block"

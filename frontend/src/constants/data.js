@@ -1,7 +1,6 @@
-// ─── Personal Info ───────────────────────────────────────────
 export const PERSONAL_INFO = {
   name: "Srinivas",
-  lastName: "Senapati",       // update with your last name
+  lastName: "Senapati",
   role: "Full Stack Developer | AI/ML Engineer",
   tagline: "Building scalable web apps today, learning AI for tomorrow.",
   bio: [
@@ -10,11 +9,10 @@ export const PERSONAL_INFO = {
   ],
   location: "India",
   locationDetail: "Open to Remote & Relocation",
-  availability: true,        // controls the "Available for Work" badge
+  availability: true,
   email: "work.srinivas.dev@gmail.com",
-  resumeUrl: "/resume.pdf",  // place your resume in /public/resume.pdf
+  resumeUrl: "/resume.pdf",
 
-  // Social links
   socials: {
     github: "https://github.com/srinivas5s",
     linkedin: "https://www.linkedin.com/in/p-srinivas-senapati-6a0207251/",
@@ -22,15 +20,12 @@ export const PERSONAL_INFO = {
   },
 };
 
-// ─── Typewriter Roles ────────────────────────────────────────
-// These cycle in the hero section typewriter animation
 export const TYPEWRITER_ROLES = [
   "Full Stack Developer",
   "MERN Stack Engineer",
   "Problem Solver",
 ];
 
-// ─── Stats — shown in About section ─────────────────────────
 export const STATS = [
   { value: "3+", label: "Years Coding" },
   { value: "4+", label: "Projects Built" },
@@ -38,7 +33,6 @@ export const STATS = [
   { value: "∞", label: "Curiosity" },
 ];
 
-// ─── About Cards ────────────────────────────────────────────
 export const ABOUT_CARDS = [
   {
     icon: "⚡",
@@ -62,8 +56,6 @@ export const ABOUT_CARDS = [
   },
 ];
 
-// ─── Skills ─────────────────────────────────────────────────
-// Each category has a color used for the card accent border
 export const SKILLS = [
   {
     category: "Languages",
@@ -109,41 +101,10 @@ export const SKILLS = [
       // { name: "Cursor", logo: "/assets/cursor.png" },
     ],
   },
-  // {
-  //   category: "AI",
-  //   items: [
-  //     { name: "Chatgpt", logo: "/assets/chatgpt.png" },
-  //     { name: "Claude", logo: "/assets/claude.png" },
-  //     { name: "DeepSeek", logo: "/assets/deepseek.png" },
-  //     { name: "Gemini", logo: "/assets/gemini.png" },
-  //     { name: "Perplexity", logo: "/assets/perplexity.png" },
-  //   ],
-  // },
+
 ];
 
-// ─── Projects ────────────────────────────────────────────────
-// featured: true → shown first; all projects shown in grid
 export const PROJECTS = [
-  // {
-  //   id: "food-delivery",
-  //   featured: true,
-  //   emoji: "🍔",
-  //   accentColor: "#FF6B35",
-  //   title: "NomNom — Food Delivery Platform",
-  //   shortDesc: "Full-stack food ordering platform with real-time order tracking.",
-  //   longDesc:
-  //     "Built a production-ready food delivery app with restaurant dashboards, customer ordering flow, real-time order status updates via Socket.io, and Stripe payment integration. Features role-based auth for admins, restaurants, and customers.",
-  //   stack: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "Stripe"],
-  //   highlights: [
-  //     "Real-time order tracking with Socket.io",
-  //     "Role-based auth (Admin / Restaurant / Customer)",
-  //     "Stripe payment gateway integration",
-  //     "Restaurant analytics dashboard",
-  //   ],
-  //   github: "https://github.com/yourusername/nomnom",
-  //   live:   "https://nomnom.vercel.app",
-  //   status: "Live",  // "Live" | "In Progress" | "Archived"
-  // },
   {
     id: "E-learning",
     featured: true,
@@ -164,50 +125,8 @@ export const PROJECTS = [
     live: "https://srinivas-senapati.vercel.app",
     status: "In Progress",
   },
-  // {
-  //   id: "farm-management",
-  //   featured: false,
-  //   emoji: "🐔",
-  //   accentColor: "#E8FF47",
-  //   title: "FarmLog — Poultry Dashboard",
-  //   shortDesc: "Farm management system with analytics and batch tracking.",
-  //   longDesc:
-  //     "A specialized dashboard for poultry farm management. Tracks bird batches, feeding schedules, mortality rates, and financial summaries. Built with data visualization for daily farm analytics.",
-  //   stack: ["MERN Stack", "Chart.js", "JWT", "Tailwind CSS"],
-  //   highlights: [
-  //     "Batch lifecycle tracking",
-  //     "Automated feeding schedule alerts",
-  //     "Financial P&L reports",
-  //     "Mobile-responsive dashboard",
-  //   ],
-  //   github: "https://github.com/yourusername/farmlog",
-  //   live:   "https://farmlog.vercel.app",
-  //   status: "Live",
-  // },
-  // {
-  //   id: "dev-tools",
-  //   featured: false,
-  //   emoji: "🛠️",
-  //   accentColor: "#00D4AA",
-  //   title: "DevKit — Developer Utilities",
-  //   shortDesc: "A collection of everyday dev tools built into one app.",
-  //   longDesc:
-  //     "A utility web app with tools like JSON formatter, regex tester, color picker, base64 encoder/decoder, and markdown previewer. Built for developers who want quick access without visiting 10 different sites.",
-  //   stack: ["React", "Tailwind CSS", "Vite"],
-  //   highlights: [
-  //     "10+ developer utility tools",
-  //     "Offline-capable PWA",
-  //     "Zero backend — runs entirely in browser",
-  //     "Dark / light mode",
-  //   ],
-  //   github: "https://github.com/yourusername/devkit",
-  //   live:   "https://devkit.vercel.app",
-  //   status: "Live",
-  // },
 ];
 
-// ─── GitHub Stats ─────────────────────────────────────────────
-// These are display values — connect GitHub API in GitHub.jsx for real data
 export const GITHUB_STATS = [
   { value: "3+", label: "Contributions", icon: "📦" },
   { value: "5+", label: "Repositories", icon: "🗂️" },
@@ -217,8 +136,6 @@ export const GITHUB_STATS = [
 
 export const GITHUB_USERNAME = "srinivas5s"; // used to build profile links
 
-// ─── Experience / Timeline ───────────────────────────────────
-// Optional section — remove if you're a fresher with no experience
 export const EXPERIENCE = [
   {
     role: "Full Stack Developer Intern",
@@ -236,10 +153,8 @@ export const EXPERIENCE = [
     desc: "Built ML models for predictive analytics, implemented data preprocessing pipelines, and deployed models using Flask APIs. Achieved 85% accuracy on test datasets.",
     stack: ["Python", "TensorFlow", "Scikit-learn", "Flask"],
   },
-  // Add more experience objects as needed
 ];
 
-// ─── Education ───────────────────────────────────────────────
 export const EDUCATION = [
   {
     degree: "Master of Computer Applications (MCA)",
@@ -257,7 +172,6 @@ export const EDUCATION = [
   },
 ];
 
-// ─── Contact Info ─────────────────────────────────────────────
 export const CONTACT_INFO = [
   {
     icon: "✉️",
@@ -279,7 +193,6 @@ export const CONTACT_INFO = [
   },
 ];
 
-// ─── Navigation Links ────────────────────────────────────────
 export const NAV_LINKS = [
   { label: "Home", href: "hero" },
   { label: "About", href: "about" },
@@ -288,11 +201,10 @@ export const NAV_LINKS = [
   { label: "Contact", href: "contact" },
 ];
 
-// ─── Meta / SEO ───────────────────────────────────────────────
 export const META = {
   title: "Srinivas Senapati — MERN Stack Developer | AI/ML Engineer",
   description:
     "Fresher MERN Stack Developer skilled in building full-stack web applications and exploring AI integration. Open to opportunities.",
   keywords: "full stack developer, MERN stack, React developer, Node.js, AI, portfolio",
-  ogImage: "/og-image.png",  // place in /public/
+  ogImage: "/og-image.png",
 };

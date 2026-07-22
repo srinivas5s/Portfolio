@@ -312,11 +312,11 @@ function LanguageBar({ languages, loading }) {
 
 // ─── Main GitHub Section ──────────────────────────────────────
 export default function GitHub() {
-  const [profile, setProfile] = useState(null);   // /users/:username
-  const [languages, setLanguages] = useState([]);      // top langs from repos
-  const [heatmap, setHeatmap] = useState([]);      // 52×7 grid from events
-  const [streak, setStreak] = useState(null);    // day streak
-  const [totalCommits, setTotalCommits] = useState(null); // commits from events
+  const [profile, setProfile] = useState(null);   
+  const [languages, setLanguages] = useState([]);      
+  const [heatmap, setHeatmap] = useState([]);     
+  const [streak, setStreak] = useState(null);    
+  const [totalCommits, setTotalCommits] = useState(null); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -333,7 +333,6 @@ export default function GitHub() {
 
     (async () => {
       try {
-        // 1. Profile
         const profileRes = await fetch(
           `${GH_API}/users/${GITHUB_USERNAME}`,
           { headers: GH_HEADERS }
@@ -347,7 +346,6 @@ export default function GitHub() {
         const profileData = await profileRes.json();
         setProfile(profileData);
 
-        // 2. Repos (all pages) → languages
         const repos = await fetchAllPages(
           `${GH_API}/users/${GITHUB_USERNAME}/repos?sort=updated`
         );
@@ -363,7 +361,6 @@ export default function GitHub() {
           .map(([name, count]) => ({ name, count }));
         setLanguages(sortedLangs);
 
-        // 3. Public events (up to 3 pages = 300 events ≈ 90 days of activity)
         const events = await fetchAllPages(
           `${GH_API}/users/${GITHUB_USERNAME}/events/public`,
           3
@@ -375,7 +372,6 @@ export default function GitHub() {
         const dayStreak = calcStreak(events);
         setStreak(dayStreak);
 
-        // Total push commits visible in events
         const commitCount = events
           .filter((e) => e.type === "PushEvent")
           .reduce((s, e) => s + (e.payload?.commits?.length ?? 0), 0);
@@ -410,7 +406,6 @@ export default function GitHub() {
     {
       icon: "💾",
       label: "Recent Commits",
-      // Events API covers ~90 days; label reflects that
       value: totalCommits !== null ? `${totalCommits}+` : null,
     },
   ];

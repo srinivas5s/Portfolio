@@ -1,10 +1,6 @@
 import { forwardRef } from "react";
 
-// ─── Variant Styles ──────────────────────────────────────────
-// Each variant is a Tailwind class string.
-// Defined outside component so they're not recreated on render.
 const VARIANTS = {
-    // Solid filled — primary CTA
     primary: [
         "bg-[var(--accent-primary)] text-[var(--bg-primary)]",
         "font-semibold",
@@ -14,7 +10,6 @@ const VARIANTS = {
         "focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]",
     ].join(" "),
 
-    // Outlined — secondary CTA
     outline: [
         "bg-transparent text-[var(--text-primary)]",
         "border border-[var(--border-medium)]",
@@ -26,7 +21,6 @@ const VARIANTS = {
         "focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]",
     ].join(" "),
 
-    // Ghost — minimal, for nav or subtle actions
     ghost: [
         "bg-transparent text-[var(--text-secondary)]",
         "font-medium",
@@ -35,7 +29,6 @@ const VARIANTS = {
         "focus-visible:ring-2 focus-visible:ring-[var(--border-medium)]",
     ].join(" "),
 
-    // Danger — destructive actions
     danger: [
         "bg-transparent text-red-400",
         "border border-red-400/30",
@@ -45,7 +38,6 @@ const VARIANTS = {
         "focus-visible:ring-2 focus-visible:ring-red-400",
     ].join(" "),
 
-    // Icon-only — square/circle button for social links etc.
     icon: [
         "bg-transparent text-[var(--text-secondary)]",
         "border border-[var(--border-subtle)]",
@@ -53,8 +45,8 @@ const VARIANTS = {
         "hover:-translate-y-[2px]",
         "hover:shadow-[0_6px_20px_rgba(232,255,71,0.15)]",
         "focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]",
-        "rounded-full",           // always circular for icon variant
-        "!p-0",                   // padding controlled by size below
+        "rounded-full",
+        "!p-0",
     ].join(" "),
 };
 
@@ -64,7 +56,6 @@ const SIZES = {
     md: "text-sm px-5 py-2.5 gap-2",
     lg: "text-base px-7 py-3.5 gap-2.5",
 
-    // Icon sizes (square dimensions)
     "icon-sm": "w-8 h-8 text-sm",
     "icon-md": "w-10 h-10 text-base",
     "icon-lg": "w-12 h-12 text-lg",
@@ -97,7 +88,6 @@ function Spinner({ size = "sm" }) {
 }
 
 // ─── Arrow Icon ───────────────────────────────────────────────
-// Lightweight inline arrow — avoids needing an icon library
 function ArrowIcon({ direction = "right" }) {
     const rotations = {
         right: "rotate-0",
@@ -168,16 +158,16 @@ function ExternalIcon() {
 /**
  * Button
  *
- * @prop {string}       variant     - "primary" | "outline" | "ghost" | "danger" | "icon"
- * @prop {string}       size        - "sm" | "md" | "lg"
- * @prop {string}       href        - If provided, renders as <a> tag
- * @prop {boolean}      external    - Opens href in new tab + shows external icon
- * @prop {boolean}      loading     - Shows spinner, disables interaction
- * @prop {boolean}      disabled    - Disables the button
- * @prop {boolean}      showArrow   - Appends arrow icon (good for CTAs)
- * @prop {boolean}      showDownload- Appends download icon
- * @prop {string}       className   - Additional Tailwind classes
- * @prop {ReactNode}    children    - Button label / content
+ * @prop {string}       variant     
+ * @prop {string}       size      
+ * @prop {string}       href        
+ * @prop {boolean}      external   
+ * @prop {boolean}      loading     
+ * @prop {boolean}      disabled    
+ * @prop {boolean}      showArrow 
+ * @prop {boolean}      showDownload
+ * @prop {string}       className  
+ * @prop {ReactNode}    children    
  */
 const Button = forwardRef(function Button(
     {
@@ -196,35 +186,23 @@ const Button = forwardRef(function Button(
     },
     ref
 ) {
-    // ── Compute icon size for icon variant ─────────────────────
     const isIconVariant = variant === "icon";
     const resolvedSize = isIconVariant
         ? SIZES[`icon-${size}`] ?? SIZES["icon-md"]
         : SIZES[size] ?? SIZES["md"];
 
-    // ── Base classes shared by all variants ────────────────────
     const baseClasses = [
-        // Layout
         "inline-flex items-center justify-center",
-        // Typography
         "font-body leading-none tracking-wide",
-        // Shape
         isIconVariant ? "" : "rounded-lg",
-        // Transitions
         "transition-all duration-200 ease-out",
-        // Cursor
         disabled || loading ? "cursor-not-allowed" : "cursor-pointer",
-        // Opacity when disabled
         disabled ? "opacity-40" : "opacity-100",
-        // Group — enables group-hover on child icons
         "group",
-        // No default browser button styling
         "border-0 outline-none appearance-none",
-        // Prevent text selection on rapid clicks
         "select-none",
     ].join(" ");
 
-    // ── Merge all classes ──────────────────────────────────────
     const classes = [
         baseClasses,
         VARIANTS[variant] ?? VARIANTS.primary,
@@ -234,13 +212,10 @@ const Button = forwardRef(function Button(
         .filter(Boolean)
         .join(" ");
 
-    // ── Content (children + optional icons) ───────────────────
     const content = (
         <>
-            {/* Loading spinner — replaces content when loading */}
             {loading && <Spinner size={size} />}
 
-            {/* Main content — hidden when loading to preserve width */}
             <span
                 className={[
                     "inline-flex items-center gap-inherit",
@@ -252,14 +227,12 @@ const Button = forwardRef(function Button(
                 {children}
             </span>
 
-            {/* Optional trailing icons — only shown when not loading */}
             {!loading && showDownload && <DownloadIcon />}
             {!loading && showArrow && <ArrowIcon />}
             {!loading && external && !isIconVariant && <ExternalIcon />}
         </>
     );
 
-    // ── Anchor variant — for nav links and external URLs ───────
     if (href) {
         const anchorProps = external
             ? { target: "_blank", rel: "noopener noreferrer" }
@@ -280,7 +253,6 @@ const Button = forwardRef(function Button(
         );
     }
 
-    // ── Button element ─────────────────────────────────────────
     return (
         <button
             ref={ref}
@@ -297,8 +269,6 @@ const Button = forwardRef(function Button(
     );
 });
 
-// ─── Named Icon Exports ───────────────────────────────────────
-// Export icons so other components can use them independently
 export { ArrowIcon, DownloadIcon, ExternalIcon, Spinner };
 
 export default Button;

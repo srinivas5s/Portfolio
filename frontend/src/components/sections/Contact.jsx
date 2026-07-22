@@ -1,13 +1,3 @@
-/* ============================================================
-   src/components/sections/Contact.jsx
-   Contact section with:
-   - Formspree form submission (free, no backend needed)
-   - Client-side validation
-   - Loading / success / error states
-   - Contact info cards
-   - Availability status
-   ============================================================ */
-
 import { useState, useRef } from "react";
 import { PERSONAL_INFO, CONTACT_INFO } from "../../constants/data";
 import { useStaggerReveal } from "../../hooks/useScrollReveal";
@@ -18,7 +8,6 @@ import Badge from "../ui/Badge";
 const FORMSPREE_ID = "xlgakevy";
 const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
 
-// ─── Validation ───────────────────────────────────────────────
 const VALIDATORS = {
   name: (v) => {
     if (!v.trim()) return "Name is required.";
@@ -50,7 +39,6 @@ function validate(fields) {
   return errors;
 }
 
-// ─── Form Field ───────────────────────────────────────────────
 function FormField({
   label,
   id,
@@ -76,11 +64,9 @@ function FormField({
     "placeholder:text-(--text-tertiary)",
     "outline-none",
     "transition-all duration-200",
-    // Border color states
     hasError ? "border-red-500/60 focus:border-red-500"
       : isValid ? "border-emerald-500/40 focus:border-emerald-500/60"
         : "border-(--border-subtle) focus:border-(--accent-primary)/60",
-    // Glow on focus
     "focus:shadow-[0_0_0_3px_rgba(232,255,71,0.08)]",
     hasError ? "focus:shadow-[0_0_0_3px_rgba(239,68,68,0.08)]" : "",
   ].join(" ");
@@ -100,7 +86,6 @@ function FormField({
         )}
       </label>
 
-      {/* Input or Textarea */}
       {isTextarea ? (
         <textarea
           id={id}
@@ -131,7 +116,6 @@ function FormField({
         />
       )}
 
-      {/* Error message */}
       {hasError && (
         <p
           id={`${id}-error`}
@@ -143,7 +127,6 @@ function FormField({
         </p>
       )}
 
-      {/* Valid checkmark */}
       {isValid && !hasError && (
         <p className="font-mono text-xs text-emerald-400 flex items-center gap-1.5">
           <span aria-hidden="true">✓</span>
@@ -154,7 +137,6 @@ function FormField({
   );
 }
 
-// ─── Contact Info Card ────────────────────────────────────────
 function ContactInfoCard({ icon, label, value, href }) {
   return (
     <a
@@ -174,7 +156,6 @@ function ContactInfoCard({ icon, label, value, href }) {
       ].join(" ")}
       aria-label={`${label}: ${value}`}
     >
-      {/* Icon */}
       <div
         className={[
           "w-10 h-10 rounded-lg shrink-0",
@@ -191,7 +172,6 @@ function ContactInfoCard({ icon, label, value, href }) {
         {icon}
       </div>
 
-      {/* Text */}
       <div className="min-w-0 flex-1">
         <p className="font-mono text-[10px] tracking-widest text-(--text-tertiary) uppercase mb-0.5">
           {label}
@@ -208,7 +188,6 @@ function ContactInfoCard({ icon, label, value, href }) {
         </p>
       </div>
 
-      {/* Arrow */}
       <span
         className={[
           "text-(--text-tertiary) text-sm shrink-0",
@@ -224,7 +203,6 @@ function ContactInfoCard({ icon, label, value, href }) {
   );
 }
 
-// ─── Success State ────────────────────────────────────────────
 function SuccessMessage({ onReset }) {
   return (
     <div
@@ -238,7 +216,6 @@ function SuccessMessage({ onReset }) {
       role="status"
       aria-live="polite"
     >
-      {/* Success icon */}
       <div
         className={[
           "w-16 h-16 rounded-full mb-6",
@@ -265,7 +242,6 @@ function SuccessMessage({ onReset }) {
   );
 }
 
-// ─── Contact Form ─────────────────────────────────────────────
 function ContactForm() {
   const INITIAL_FIELDS = {
     name: "",
@@ -277,14 +253,13 @@ function ContactForm() {
   const [fields, setFields] = useState(INITIAL_FIELDS);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [status, setStatus] = useState("idle"); 
 
   // ── Field handlers ─────────────────────────────────────────
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFields((prev) => ({ ...prev, [name]: value }));
 
-    // Re-validate touched fields on change
     if (touched[name]) {
       const err = VALIDATORS[name]?.(value);
       setErrors((prev) => ({ ...prev, [name]: err }));
@@ -298,28 +273,22 @@ function ContactForm() {
     setErrors((prev) => ({ ...prev, [name]: err }));
   };
 
-  // ── Submit ─────────────────────────────────────────────────
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Touch all fields to show validation errors
     const allTouched = Object.fromEntries(
       Object.keys(INITIAL_FIELDS).map((k) => [k, true])
     );
     setTouched(allTouched);
 
-    // Validate
     const validationErrors = validate(fields);
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) return;
 
-    // Submit
     setStatus("loading");
 
     try {
-      // Use Formspree if ID is set, otherwise simulate success
       if (FORMSPREE_ID === "YOUR_FORM_ID") {
-        // Demo mode — simulate API delay
         await new Promise((r) => setTimeout(r, 1500));
         setStatus("success");
         return;
@@ -351,7 +320,6 @@ function ContactForm() {
     setErrors({});
   };
 
-  // ── Success state ──────────────────────────────────────────
   if (status === "success") {
     return <SuccessMessage onReset={handleReset} />;
   }
@@ -363,7 +331,6 @@ function ContactForm() {
       aria-label="Contact form"
       className="flex flex-col gap-5"
     >
-      {/* Name + Email row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <FormField
           label="Your Name"
@@ -390,7 +357,6 @@ function ContactForm() {
         />
       </div>
 
-      {/* Subject */}
       <FormField
         label="Subject"
         id="subject"
@@ -403,7 +369,6 @@ function ContactForm() {
         required
       />
 
-      {/* Message */}
       <FormField
         label="Message"
         id="message"
@@ -439,7 +404,6 @@ function ContactForm() {
         </div>
       )}
 
-      {/* Submit */}
       <Button
         variant="primary"
         size="lg"
@@ -453,7 +417,6 @@ function ContactForm() {
         {status === "loading" ? "Sending..." : "Send Message →"}
       </Button>
 
-      {/* Privacy note */}
       <p className="font-mono text-[10px] text-(--text-tertiary) text-center tracking-wide">
         Your information is never shared with third parties.
       </p>
@@ -461,7 +424,6 @@ function ContactForm() {
   );
 }
 
-// ─── Main Contact Section ─────────────────────────────────────
 export default function Contact() {
   const infoRef = useRef(null);
   useStaggerReveal(infoRef, { staggerMs: 80, threshold: 0.1 });
@@ -474,7 +436,6 @@ export default function Contact() {
     >
       <div className="container-main">
 
-        {/* Section header */}
         <SectionHeader
           label="Get In Touch"
           number={5}
@@ -487,9 +448,7 @@ export default function Contact() {
         {/* ── Two column layout ── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
-          {/* Left — Info */}
           <div>
-            {/* Availability badge */}
             {PERSONAL_INFO.availability && (
               <div className="reveal mb-8">
                 <Badge variant="available">
@@ -498,7 +457,6 @@ export default function Contact() {
               </div>
             )}
 
-            {/* Heading */}
             <div className="reveal reveal-delay-1 mb-6">
               <h3
                 className={[
@@ -519,7 +477,6 @@ export default function Contact() {
               </p>
             </div>
 
-            {/* Contact info cards */}
             <div
               ref={infoRef}
               className="flex flex-col gap-3 mb-8"
@@ -538,7 +495,6 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Response time card */}
             <div
               className={[
                 "reveal",
@@ -575,7 +531,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right — Form */}
           <div className="reveal reveal-delay-2">
             <div
               className={[
@@ -584,7 +539,6 @@ export default function Contact() {
                 "bg-(--bg-card)",
               ].join(" ")}
             >
-              {/* Form header */}
               <div className="mb-6">
                 <p className="font-mono text-[10px] tracking-widest text-(--text-tertiary) uppercase mb-1">
                   Send a message

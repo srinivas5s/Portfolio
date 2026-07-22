@@ -25,7 +25,6 @@ export function useTypewriter(texts = [], options = {}) {
 
     timeoutRef.current = setTimeout(() => {
       if (!isDeleting) {
-        // Typing
         setIsTyping(true);
 
         const nextText = currentText.slice(
@@ -35,7 +34,6 @@ export function useTypewriter(texts = [], options = {}) {
 
         setDisplayText(nextText);
 
-        // Finished typing
         if (nextText === currentText) {
           setIsTyping(false);
 
@@ -48,14 +46,12 @@ export function useTypewriter(texts = [], options = {}) {
           }
         }
       } else {
-        // Deleting
         setIsTyping(false);
 
         const nextText = displayText.slice(0, -1);
 
         setDisplayText(nextText);
 
-        // Finished deleting
         if (nextText === "") {
           setIsDeleting(false);
 
@@ -82,7 +78,6 @@ export function useTypewriter(texts = [], options = {}) {
     config.loop,
   ]);
 
-  // Initial delay
   useEffect(() => {
     if (!texts.length) return;
 

@@ -1,6 +1,4 @@
-// ─── Variant Definitions ─────────────────────────────────────
 const VARIANTS = {
-  // "Available for Work" — hero section indicator
   available: {
     wrapper: [
       "inline-flex items-center gap-2",
@@ -14,7 +12,6 @@ const VARIANTS = {
     dot: "bg-[var(--accent-primary)] animate-pulse-glow",
   },
 
-  // Project / item status — "Live", "In Progress", "Archived"
   status: {
     Live: {
       wrapper: "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium font-mono bg-emerald-400/10 text-emerald-400 border border-emerald-400/20",
@@ -30,7 +27,6 @@ const VARIANTS = {
     },
   },
 
-  // Tech stack tag — project cards
   tech: [
     "inline-flex items-center",
     "px-2.5 py-1 rounded-md",
@@ -42,14 +38,12 @@ const VARIANTS = {
     "cursor-default select-none",
   ].join(" "),
 
-  // Section category label — e.g. skill category headers
   mono: [
     "inline-flex items-center gap-2",
     "text-xs font-mono font-semibold tracking-[0.12em] uppercase",
     "text-[var(--accent-primary)]",
   ].join(" "),
 
-  // Outline pill — generic use
   outline: [
     "inline-flex items-center gap-1.5",
     "px-3 py-1 rounded-full",
@@ -62,7 +56,6 @@ const VARIANTS = {
     "cursor-default select-none",
   ].join(" "),
 
-  // Solid filled — used for highlights
   solid: [
     "inline-flex items-center gap-1.5",
     "px-3 py-1 rounded-full",
@@ -88,7 +81,6 @@ function Dot({ className = "" }) {
 }
 
 // ─── Accent Line ─────────────────────────────────────────────
-// Small decorative dash before mono labels
 function AccentDash({ color }) {
   return (
     <span
@@ -103,14 +95,14 @@ function AccentDash({ color }) {
 /**
  * Badge
  *
- * @prop {string}   variant   - "available"|"status"|"tech"|"mono"|"outline"|"solid"
- * @prop {string}   status    - For variant="status": "Live"|"In Progress"|"Archived"
- * @prop {boolean}  dot       - Show animated dot indicator
- * @prop {boolean}  dash      - Show accent dash (for mono variant)
- * @prop {string}   color     - Custom accent color (for mono variant)
- * @prop {string}   icon      - Optional emoji or character prefix
- * @prop {string}   className - Additional Tailwind classes
- * @prop {ReactNode}children  - Badge label text
+ * @prop {string}   variant   
+ * @prop {string}   status    
+ * @prop {boolean}  dot       
+ * @prop {boolean}  dash     
+ * @prop {string}   color     
+ * @prop {string}   icon     
+ * @prop {string}   className 
+ * @prop {ReactNode}children  
  */
 function Badge({
   variant = "outline",
@@ -181,10 +173,8 @@ function Badge({
         aria-label={typeof children === "string" ? children : undefined}
         {...rest}
       >
-        {/* Dash before label */}
         {dash && <AccentDash color={color} />}
 
-        {/* Icon prefix */}
         {icon && (
           <span aria-hidden="true">{icon}</span>
         )}
