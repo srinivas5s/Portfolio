@@ -6,7 +6,7 @@ A modern, responsive, and highly customizable portfolio website built with **Rea
 
 ## 🌐 Live Demo
 
-🔗 **Portfolio:** https://your-portfolio-link.com
+🔗 **Portfolio:** srinivas-senapati.vercel.app
 
 ---
 
