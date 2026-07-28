@@ -77,9 +77,7 @@ function StatsRow() {
                         "flex flex-col items-center justify-center",
                         "py-6 px-4 text-center",
                         "bg-(--bg-card)",
-                        // Right border on all but last in each row
                         i < STATS.length - 1 ? "border-r border-(--border-subtle)" : "",
-                        // Bottom border on first row for 2-col mobile layout
                         i < 2 ? "border-b sm:border-b-0 border-(--border-subtle)" : "",
                         "group hover:bg-(--bg-hover) transition-colors duration-200",
                     ].join(" ")}
@@ -208,7 +206,6 @@ function TimelineItem({ item, isLast = false, type = "experience" }) {
 
 // ─── Timeline Section ─────────────────────────────────────────
 function Timeline() {
-    // Don't render if both arrays are empty
     const hasExp = EXPERIENCE && EXPERIENCE.length > 0;
     const hasEdu = EDUCATION && EDUCATION.length > 0;
     if (!hasExp && !hasEdu) return null;
@@ -265,7 +262,6 @@ function Timeline() {
 
 // ─── Main About Section ───────────────────────────────────────
 export default function About() {
-    // Stagger the capability cards on scroll
     const cardsRef = useRef(null);
     useStaggerReveal(cardsRef, { staggerMs: 70, threshold: 0.1 });
 

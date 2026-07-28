@@ -18,15 +18,14 @@ function toDateStr(date) {
 
 function weekStart(date) {
   const d = new Date(date);
-  const day = d.getDay(); // 0 = Sun
-  d.setDate(d.getDate() - day); // align to Sunday (GitHub's week start)
+  const day = d.getDay(); 
+  d.setDate(d.getDate() - day); 
   d.setHours(0, 0, 0, 0);
   return d;
 }
 
 function buildHeatmap(events) {
-  // Count commits per calendar day
-  const commitsByDay = {}; // "YYYY-MM-DD" -> count
+  const commitsByDay = {}; 
 
   events.forEach((ev) => {
     if (ev.type !== "PushEvent") return;
@@ -35,10 +34,9 @@ function buildHeatmap(events) {
     commitsByDay[day] = (commitsByDay[day] || 0) + commits;
   });
 
-  // Build grid: 52 weeks × 7 days, week 0 = oldest
   const today = new Date();
   const endDay = weekStart(today);
-  endDay.setDate(endDay.getDate() + 6); // last Saturday
+  endDay.setDate(endDay.getDate() + 6); 
 
   const grid = [];
 
@@ -50,7 +48,6 @@ function buildHeatmap(events) {
       const key = toDateStr(cell);
       const count = commitsByDay[key] ?? 0;
 
-      // Map commit count → 0–4 level
       const level = count === 0 ? 0
         : count <= 2 ? 1
           : count <= 5 ? 2
@@ -107,7 +104,7 @@ async function fetchAllPages(baseUrl, maxPages = 10) {
     if (!Array.isArray(data) || data.length === 0) break;
 
     results.push(...data);
-    if (data.length < 100) break; // last page
+    if (data.length < 100) break;
     page++;
   }
 
