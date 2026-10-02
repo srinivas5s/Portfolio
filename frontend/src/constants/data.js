@@ -106,6 +106,41 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
+    id: "Legal-Metrology",
+    featured: true,
+    emoji: "⚖️",
+    accentColor: "#0F766E",
+    title: "AI-Powered Legal Metrology Compliance System",
+    shortDesc:
+      "An AI-powered platform for automated packaged-commodity compliance inspection.",
+    longDesc:
+      "A web-based Legal Metrology compliance platform that uses OCR, image processing, and barcode scanning to extract product declarations and evaluate packaged commodities against applicable Legal Metrology requirements. The system identifies missing or potentially non-compliant declarations, provides evidence-backed explanations, enables consumers to submit complaints, and provides administrators with verification, case tracking, and detailed PDF reporting.",
+    stack: [
+      "React.js",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Python",
+      "OCR",
+      "OpenCV",
+      "Pyzbar",
+      "Cloudinary"
+    ],
+    highlights: [
+      "OCR-based product declaration extraction",
+      "Barcode scanning with Pyzbar",
+      "Rule-based Legal Metrology compliance engine",
+      "Evidence-backed violation detection and explanations",
+      "Consumer complaint submission and tracking",
+      "Admin verification and enforcement case tracking",
+      "Automated detailed compliance PDF reports"
+    ],
+    github: "https://github.com/AuroSampad2003/AI-POWERED-LEGAL-METROLOGY-COMPLIANCE-SYSTEM",
+    live: "https://srinivas-senapati.vercel.app",
+    status: "Completed",
+  },
+  {
     id: "E-learning",
     featured: true,
     emoji: "🤖",
